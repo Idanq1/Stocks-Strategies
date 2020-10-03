@@ -42,7 +42,7 @@ for stock in stock_list:  # 700
     tickers.append(stock_ticker)
 
 
-stocks_div = 10
+stocks_div = 700
 tmp = tickers.copy()
 stocks700 = []
 while tmp:
@@ -56,7 +56,7 @@ all_stocks = None
 for stocks in stocks700:
     current_date = datetime.date.today()
     past_date = current_date - dateutil.relativedelta.relativedelta(days=100)
-    if not all_stocks:
+    if all_stocks is None:
         all_stocks = yf.download(" ".join(stocks), start=past_date, end=current_date, group_by="ticker", show_errors=False, progress=True)
     else:
         info = yf.download(" ".join(stocks), start=past_date, end=current_date, group_by="ticker", show_errors=False, progress=True)
@@ -65,18 +65,18 @@ for stocks in stocks700:
     # if n == 2:
     #     break
     # n += 1
-
-stocks_info = stocks_splt[0]
-for i in range(len(stocks_splt)):
-    if i == 0:
-        continue
-    stocks_info = stocks_info.join(stocks_splt[i])
-
-print(stocks_info)
+#
+# stocks_info = stocks_splt[0]
+# for i in range(len(stocks_splt)):
+#     if i == 0:
+#         continue
+#     stocks_info = stocks_info.join(stocks_splt[i])
+#
+# print(stocks_info)
 
 for stock in tickers:
     try:
-        price = float(stocks_info[stock]['Close'].iloc[-1])
+        price = float(all_stocks[stock]['Close'].iloc[-1])
     except KeyError:
         # print(f"Couldn't find {stock}")
         continue
