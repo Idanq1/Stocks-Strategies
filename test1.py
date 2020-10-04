@@ -6,8 +6,6 @@ import sys
 import time
 import pandas as pd
 
-# TODO: Join pandas when downloading and not after
-
 s = time.time()
 
 
