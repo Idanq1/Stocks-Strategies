@@ -5,16 +5,22 @@ import time
 s = time.time()
 
 
-def get_candle_class(ticker, period="max", interval="1d", start=None, end=None):
+def download_candles(ticker, period="max", interval="1d", start=None, end=None):
     if start and not end:
         end = datetime.date.today()
     elif not start and end:
         print("Gotta give me a start m8")
         return
+    if isinstance(ticker, list):
+        return yf.download(" ".join(ticker), period=period, interval=interval, start=start, end=end, progress=False, show_errors=False, group_by="ticker")
+    elif isinstance(ticker, str):
+        return yf.download(ticker, period=period, interval=interval, start=start, end=end, progress=False, show_errors=False, group_by="ticker")
+        # return yf.download(ticker, period=period, interval=interval, start=start, end=end, progress=False, show_errors=False, group_by="ticker")
+# return data
 
+
+def get_candles(data, ticker):
     candles = []
-
-    data = yf.download(ticker, period=period, interval=interval, start=start, end=end, progress=True, show_errors=False)
     rows = data.shape[0]
     for i in range(rows):
         open_ = data[["Open"]]["Open"].iloc[i]
@@ -49,41 +55,42 @@ tickers = get_tickers()
 
 n = 0
 div = 700
+volume_threshold = 100000  # Filter out stocks with less than this volume.
 tmp_tickers = []
 ticker_candles = None
-for ticker in tickers:
-    if n < 700:
-        tmp_tickers.append(ticker)
+for stock_ticker in tickers:
+    if n < div:
+        tmp_tickers.append(stock_ticker)
+        n += 1
         continue
     n = 0
-    ticker_candles = get_candle_class(ticker, "10d", "1d")
-    sma_period = 9
-    sma_calc = []
-    sma_value = None
-    for candle in ticker_candles:
-        if len(sma_calc) < sma_period:
-            sma_calc.append(candle.close)
-        else:
-            sma_value = sum(sma_calc) / sma_period
-            sma_calc = sma_calc[1:]
-            sma_calc.append(candle.close)
+    # ticker_candles = get_candle_class(ticker, "10d", "1d")
+    candles = download_candles(tmp_tickers, "10d", "1d")
+    for tmp_ticker in tmp_tickers:
+        ticker_candles = get_candles(candles[tmp_ticker], tmp_ticker)
+        if ticker_candles[-2].volume < volume_threshold:  # Two because the volume on the last candle isn't complete
+            continue
+        sma_period = 9
+        sma_calc = []
+        sma_value = None
+        for candle in ticker_candles:
+            if len(sma_calc) < sma_period:
+                sma_calc.append(candle.close)
+            else:
+                sma_value = sum(sma_calc) / sma_period
+                sma_calc = sma_calc[1:]
+                sma_calc.append(candle.close)
 
-        if sma_value:
-            if candle.head() >= candle.body() * 2 and candle.tail() <= candle.body() * 0.8:  # Inverted hammer & Shooting star
-                if sma_value < candle.close:  # Downtrend
-                    print(f"Bullish- {ticker}- Inverted Hammer- {candle.date}")
-                else:  # Uptrend
-                    print(f"Dubi- {ticker}- Shooting star- {candle.date}")
-            elif candle.tail() >= candle.body() * 2 and candle.head() <= candle.body() * 0.8:  # Hammer & Hanging man
-                if sma_value < candle.close:  # Downtrend
-                    print(f"Bullish- {ticker}- Hammer- {candle.date}")
-                else:  # Uptrend
-                    print(f"Dubi- {ticker}- Hanging man- {candle.date}")
-        # else:
-        #     if candle.head() >= candle.body() * 2 and candle.tail() <= candle.body() * 0.8:  # Shooting Star
-        #         print(f"Bullish- Shooting Star- {candle.date}")
-        #     elif candle.tail() >= candle.body() * 2 and candle.head() <= candle.body() * 0.8:  # Hammer
-        #         print(f"Bullish- - {candle.date}")
-                # if candle.head() >= candle.body() * 2 and candle.tail() <= candle.body() * 1:  # Inverted hammer, shooting star
-
+            if sma_value:
+                if candle.head() >= candle.body() * 2 and candle.tail() <= candle.body() * 0.8:  # Inverted hammer & Shooting star
+                    if sma_value < candle.close:  # Downtrend
+                        print(f"Bullish- {candle.ticker}- Inverted Hammer- {candle.date}")
+                    else:  # Uptrend
+                        print(f"Dubi- {candle.ticker}- Shooting star- {candle.date}")
+                elif candle.tail() >= candle.body() * 2 and candle.head() <= candle.body() * 0.8:  # Hammer & Hanging man
+                    if sma_value < candle.close:  # Downtrend
+                        print(f"Bullish- {candle.ticker}- Hammer- {candle.date}")
+                    else:  # Uptrend
+                        print(f"Dubi- {candle.ticker}- Hanging man- {candle.date}")
+    tmp_tickers = []
 print(time.time() - s)
