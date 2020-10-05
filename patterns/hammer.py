@@ -14,7 +14,7 @@ def get_candle_class(ticker, period="max", interval="1d", start=None, end=None):
 
     candles = []
 
-    data = yf.download(ticker, period=period, interval=interval, start=start, end=end, progress=False, show_errors=False)
+    data = yf.download(ticker, period=period, interval=interval, start=start, end=end, progress=True, show_errors=False)
     rows = data.shape[0]
     for i in range(rows):
         open_ = data[["Open"]]["Open"].iloc[i]
@@ -47,7 +47,15 @@ def get_tickers():
 
 tickers = get_tickers()
 
+n = 0
+div = 700
+tmp_tickers = []
+ticker_candles = None
 for ticker in tickers:
+    if n < 700:
+        tmp_tickers.append(ticker)
+        continue
+    n = 0
     ticker_candles = get_candle_class(ticker, "10d", "1d")
     sma_period = 9
     sma_calc = []
@@ -77,3 +85,5 @@ for ticker in tickers:
         #     elif candle.tail() >= candle.body() * 2 and candle.head() <= candle.body() * 0.8:  # Hammer
         #         print(f"Bullish- - {candle.date}")
                 # if candle.head() >= candle.body() * 2 and candle.tail() <= candle.body() * 1:  # Inverted hammer, shooting star
+
+print(time.time() - s)
