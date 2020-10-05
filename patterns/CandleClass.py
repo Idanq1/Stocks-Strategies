@@ -37,3 +37,11 @@ class Candle:
 
     def is_green(self):
         return self.close > self.open
+
+    def is_doji(self):
+        """
+        Finds if a candle is a doji or close to doji
+        :return:
+        """
+        body = self.body()
+        return body * 5 <= self.head() and body * 5 <= self.tail()  # 5 threshold, as bigger the number, the dojier the candle

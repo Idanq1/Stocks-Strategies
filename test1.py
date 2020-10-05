@@ -22,7 +22,6 @@ def get_price(ticker):
     data = yf.download(ticker, past_date, current_date)
     sys.stdout = sys.__stdout__
     return data[["Close"]]['Close'].iloc[0]
-    # yf.Download(ticker, )
 
 
 tickers = []

@@ -2,14 +2,7 @@ import yfinance as yf
 import datetime
 from patterns.CandleClass import Candle
 import time
-import pandas as pd
-
 s = time.time()
-
-# TODO: Better doji
-# TODO: Better morning star
-# TODO: Evening star
-# TODO: Look for trend
 
 
 def download_candles(ticker, period="max", interval="1d", start=None, end=None):
@@ -58,42 +51,26 @@ def get_tickers():
     return tickers
 
 
-tickers = get_tickers()
+all_tickers = get_tickers()
 
-n = 0
-div = 700
-volume_threshold = 100000  # Filter out stocks with less than this volume.
-tmp_tickers = []
-ticker_candles = None
-for stock_ticker in tickers:
-    # stock_ticker = "CEL"
-    if n < div:
-        tmp_tickers.append(stock_ticker)
-        n += 1
-        continue
-    n = 0
-    # ticker_candles = get_candle_class(ticker, "10d", "1d")
-    # tmp_tickers = ["CEL"]
-    candles = download_candles(tmp_tickers, "3d", "1d")
-    for tmp_ticker in tmp_tickers:
-        # -------------- Ticker ------------
-        # tmp_ticker = ["CEL"]
-        ticker_candles = get_candles(candles[tmp_ticker], tmp_ticker)
-        first_candle = None
-        second_candle = None
-        # F - S - C
-        for candle in ticker_candles:
-            if not second_candle:
-                second_candle = candle
-                continue
-            elif not first_candle:
-                first_candle = second_candle
-                second_candle = candle
-                continue
-            if not first_candle.is_green() and second_candle.is_doji():
-                if first_candle.close < candle.close < first_candle.open and candle.is_green():
-                    print(f"{candle.ticker}- {candle.date}")
-            first_candle = second_candle
-            second_candle = candle
-    tmp_tickers = []
+ticker = "TSLA"
+candles = download_candles(ticker, "max", "1d")
+ticker_candles = get_candles(candles, ticker)
+sma_period = 9
+sma_calc = []
+sma_value = None
+first_candle = None
+second_candle = None
+# F - S - C
+for candle in ticker_candles:
+    print("CODE GOES HERE!")
+    # if len(sma_calc) < sma_period:
+    #     sma_calc.append(candle.close)
+    # else:
+    #     sma_value = sum(sma_calc) / sma_period
+    #     sma_calc = sma_calc[1:]
+    #     sma_calc.append(candle.close)
+    #
+    # print(candle.open)
+
 print(time.time() - s)
