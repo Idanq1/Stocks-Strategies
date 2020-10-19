@@ -1,7 +1,8 @@
 import yfinance as yf
 import datetime
-from patterns.CandleClass import Candle
+from CandleClass import Candle
 import time
+
 s = time.time()
 
 
@@ -54,7 +55,7 @@ def get_tickers():
 tickers = get_tickers()
 
 n = 0
-div = 700
+div = 50
 volume_threshold = 100000  # Filter out stocks with less than this volume.
 tmp_tickers = []
 ticker_candles = None
