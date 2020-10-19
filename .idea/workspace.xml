@@ -21,11 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="da8f357f-bcc9-4762-9883-2da831bf612e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patterns/CandleClass.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patterns/hammer.py" beforeDir="false" afterPath="$PROJECT_DIR$/patterns/hammer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patterns/morning star.py" beforeDir="false" afterPath="$PROJECT_DIR$/patterns/morning star.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patterns/template end.py" beforeDir="false" afterPath="$PROJECT_DIR$/patterns/template end.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patterns/template.py" beforeDir="false" afterPath="$PROJECT_DIR$/patterns/template.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +178,7 @@
       <workItem from="1602148872101" duration="2141000" />
       <workItem from="1602436114432" duration="1237000" />
       <workItem from="1603024199125" duration="9546000" />
-      <workItem from="1603110928976" duration="714000" />
+      <workItem from="1603110928976" duration="1246000" />
     </task>
     <task id="LOCAL‎00001" summary="Morning star finished (I hope)&#10;&#10;Added Evening star, Volume threshold, SMA (14) for trend">
       <created>1602020690802</created>
@@ -191,7 +186,13 @@
       <option name="presentableId" value="LOCAL‎00001" />
       <updated>1602020690802</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL‎00002" summary="Morning star finished (I hope)&#10;&#10;Added Evening star, Volume threshold, SMA (14) for trend">
+      <created>1603111709950</created>
+      <option name="number" value="LOCAL‎00002" />
+      <option name="presentableId" value="LOCAL‎00002" />
+      <updated>1603111709950</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,14 +215,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="Morning star finished (I hope)&#10;&#10;Added Evening star, Volume threshold, SMA (14) for trend" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="910" y="18" key="CommitChangelistDialog2" timestamp="1602020689166">
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603111506869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="910" y="18" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602020689166" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1602436394529">
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603111506869" />
+    <state x="910" y="18" key="CommitChangelistDialog2" timestamp="1603111708508">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602436394529" />
+    <state x="910" y="18" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603111708508" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1603111899060">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603111899060" />
     <state width="1877" height="264" key="GridCell.Tab.0.bottom" timestamp="1603055635435">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -258,14 +263,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601916380369" />
-    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1602020695802">
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1603111714144">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602020695802" />
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602014956690">
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603111714144" />
+    <state x="832" y="364" width="846" height="523" key="cloudConfig.SelfSettingsDialog" timestamp="1603111561286">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602014956690" />
+    <state x="832" y="364" width="846" height="523" key="cloudConfig.SelfSettingsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603111561286" />
+    <state x="777" y="436" width="365" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603112243517">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="436" width="365" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603112243517" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602450394348">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
