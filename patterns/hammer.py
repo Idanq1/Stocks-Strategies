@@ -1,6 +1,7 @@
 import yfinance as yf
 import datetime
-from patterns.CandleClass import Candle
+from patterns.Ca
+ndleClass import Candle
 import time
 s = time.time()
 

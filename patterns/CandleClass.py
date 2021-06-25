@@ -37,3 +37,10 @@ class Candle:
 
     def is_green(self):
         return self.close > self.open
+
+    def change(self):
+        """
+        Returns change from open to close in percent
+        :return:
+        """
+        return ((self.close/self.open) * 100) - 100
