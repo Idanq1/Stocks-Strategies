@@ -121,17 +121,22 @@ def sell(stock, price, date, shares=None, path=r"data/SMA.json"):
     write_json(data, path)
 
 
-ticker = "TSLA"
-candles = download_candles(ticker, "1mo", "1d")
+ticker = "TWTR"
+candles = download_candles(ticker, "max", "1d")
 ticker_candles = get_candles(candles, ticker)
+
 sma_period = 9
 sma_calc = []
 sma_value = None
+
+rsi_period = 14
+rsi_calc = []
+
 bal = 10000
 bought = False
 prev_candle = None
 prev_sma = None
-conf = False
+conf = True
 reset_file()
 for candle in ticker_candles:
     if len(sma_calc) < sma_period:

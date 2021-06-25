@@ -19,8 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da8f357f-bcc9-4762-9883-2da831bf612e" name="Default Changelist" comment="">
+    <list default="true" id="da8f357f-bcc9-4762-9883-2da831bf612e" name="Default Changelist" comment="Morning star finished (I hope)&#10;&#10;Added Evening star, Volume threshold, SMA (14) for trend">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Strategies/SMA_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Strategies/SMA_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Strategies/data/SMA.json" beforeDir="false" afterPath="$PROJECT_DIR$/Strategies/data/SMA.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +180,10 @@
       <workItem from="1602148872101" duration="2141000" />
       <workItem from="1602436114432" duration="1237000" />
       <workItem from="1603024199125" duration="9546000" />
-      <workItem from="1603110928976" duration="1246000" />
+      <workItem from="1603110928976" duration="2055000" />
+      <workItem from="1603208987606" duration="601000" />
+      <workItem from="1603400996968" duration="2039000" />
+      <workItem from="1603545523189" duration="204000" />
     </task>
     <task id="LOCAL‎00001" summary="Morning star finished (I hope)&#10;&#10;Added Evening star, Volume threshold, SMA (14) for trend">
       <created>1602020690802</created>
@@ -219,33 +224,37 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603111506869" />
-    <state x="910" y="18" key="CommitChangelistDialog2" timestamp="1603111708508">
+    <state x="910" y="18" key="CommitChangelistDialog2" timestamp="1603112248832">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="910" y="18" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603111708508" />
+    <state x="910" y="18" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603112248832" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1603111899060">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603111899060" />
-    <state width="1877" height="264" key="GridCell.Tab.0.bottom" timestamp="1603055635435">
+    <state width="1877" height="227" key="GridCell.Tab.0.bottom" timestamp="1603402284842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="264" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603055635435" />
+    <state width="1877" height="227" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603402284842" />
+    <state width="1877" height="227" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1603401656162" />
     <state width="1877" height="264" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602029162403" />
-    <state width="1877" height="264" key="GridCell.Tab.0.center" timestamp="1603055635435">
+    <state width="1877" height="227" key="GridCell.Tab.0.center" timestamp="1603402284842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="264" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603055635435" />
+    <state width="1877" height="227" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603402284842" />
+    <state width="1877" height="227" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1603401656162" />
     <state width="1877" height="264" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602029162403" />
-    <state width="1877" height="264" key="GridCell.Tab.0.left" timestamp="1603055635435">
+    <state width="1877" height="227" key="GridCell.Tab.0.left" timestamp="1603402284841">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="264" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603055635435" />
+    <state width="1877" height="227" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603402284841" />
+    <state width="1877" height="227" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1603401656162" />
     <state width="1877" height="264" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602029162403" />
-    <state width="1877" height="264" key="GridCell.Tab.0.right" timestamp="1603055635435">
+    <state width="1877" height="227" key="GridCell.Tab.0.right" timestamp="1603402284842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="264" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603055635435" />
+    <state width="1877" height="227" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603402284842" />
+    <state width="1877" height="227" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1603401656162" />
     <state width="1877" height="264" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602029162403" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1601916380369">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -286,7 +295,7 @@
     <SUITE FILE_PATH="coverage/hammer_py$morning_star.coverage" NAME="morning star Coverage Results" MODIFIED="1601932928516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/patterns" />
     <SUITE FILE_PATH="coverage/Stocks_Strategies$morning_star.coverage" NAME="morning star Coverage Results" MODIFIED="1601919271603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/patterns" />
     <SUITE FILE_PATH="coverage/hammer_py$Morning_Star.coverage" NAME="Morning Star Coverage Results" MODIFIED="1602021148020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/patterns" />
-    <SUITE FILE_PATH="coverage/hammer_py$SMA_test.coverage" NAME="SMA_test Coverage Results" MODIFIED="1603055635426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Strategies" />
+    <SUITE FILE_PATH="coverage/hammer_py$SMA_test.coverage" NAME="SMA_test Coverage Results" MODIFIED="1603402284829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Strategies" />
     <SUITE FILE_PATH="coverage/hammer_py$Test_morning_star.coverage" NAME="Test morning star Coverage Results" MODIFIED="1601934299031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/patterns" />
     <SUITE FILE_PATH="coverage/Stocks_Strategies$hammer.coverage" NAME="hammer Coverage Results" MODIFIED="1601917427009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/patterns" />
     <SUITE FILE_PATH="coverage/hammer_py$hammer.coverage" NAME="hammer Coverage Results" MODIFIED="1603025221489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/patterns" />
