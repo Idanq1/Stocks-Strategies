@@ -10,7 +10,7 @@ class Candle:
 
     def head(self):
         """
-        Returns the shadow up.
+        Returns the length of the top wick.
         :return:
         """
         if self.close > self.open:
@@ -20,7 +20,7 @@ class Candle:
 
     def tail(self):
         """
-        Returns the shadow down.
+        Returns the length of the bottom wick.
         :return:
         """
         if self.close > self.open:
@@ -52,3 +52,6 @@ class Candle:
         :return:
         """
         return ((self.close/self.open) * 100) - 100
+
+    def is_bullish_engulfing(self):
+        ...

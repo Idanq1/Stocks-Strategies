@@ -1,6 +1,6 @@
 import pandas
-import numpy
-import talib
+import numpy as np
+
 
 def get_average_up(pvs):
     sums = []
@@ -10,11 +10,41 @@ def get_average_up(pvs):
     return sum(sums)/len(sums)
 
 
+def get_rsi(prices, period=14):
+    deltas = np.diff(prices)
+    seed = deltas[:period+ 1]
+    up = seed[seed >= 0].sum() / period
+    down = -seed[seed < 0].sum() / period
+    rs = up / down
+    rsi = np.zeros_like(prices)
+    rsi[:period] = 100. - 100. / (1. + rs)
+
+    for i in range(period, len(prices)):
+        delta = deltas[i - 1]  # cause the diff is 1 shorter
+
+        if delta > 0:
+            upval = delta
+            downval = 0.
+        else:
+            upval = 0.
+            downval = -delta
+
+        up = (up * (period - 1) + upval) / period
+        down = (down * (period - 1) + downval) / period
+
+        rs = up / down
+        rsi[i] = 100. - 100. / (1. + rs)
+
+    return rsi
+
+
 candles_c = [1274, 1249, 1245, 1233, 1255, 1251, 1277, 1271, 1219, 1244, 1273, 1289, 1269, 1316, 1346, 1380, 1413]
-period = 16
-new_candle_c = candles_c[:period+1]
-new_candle_c = pandas.DataFrame(new_candle_c)
-print(talib.RSI(new_candle_c))
+
+period = 14
+# new_candle_c = candles_c[:period+1]
+# new_candle_c = pandas.DataFrame(candles_c)
+
+print(get_rsi(candles_c, period))
 # dif = []
 # for i in range(period):
 #     dif.append(((new_candle_c[i+1] - new_candle_c[i])/new_candle_c[i])*100)

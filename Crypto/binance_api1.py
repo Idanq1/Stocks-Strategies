@@ -1,6 +1,6 @@
 from binance import Client
 import time
-from patterns.CandleClass import Candle
+from CandleClass import Candle
 import winsound
 
 api_key = "8AiGAyxlhYQaRpE1s7097hx5sZ12Ogtr8ir9DsyztaD5j24LrI0fEoToDzCI5lle"
