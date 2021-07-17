@@ -34,7 +34,7 @@ def get_candles(data, ticker):
 
 
 def main():
-    test_ticker = "MDB"
+    test_ticker = "TSLA"
     candles = get_candles(download_candles(test_ticker, "7d"), test_ticker)
     print(patterns.is_bullish_engulfing(candles[-2], candles[-1]))
 
