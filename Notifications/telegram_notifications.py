@@ -1,30 +1,39 @@
 from telegram.ext import Updater, CommandHandler, CallbackContext
+import requests
 from telegram import Update
 import telegram
 from binance import Client
-import yfinance as yf
-import datetime
 import json
 import time
 
 
 def get_ticker_price(ticker, coin=False):
     if ticker and not coin:
-        print("Does not work for now.")
-        start_t = datetime.datetime.fromtimestamp(time.time() - 120)
-        end_t = datetime.datetime.fromtimestamp(time.time())
-        data = yf.download(ticker, start=start_t, end=end_t, progress=False, show_errors=False, group_by="ticker")
-        for dat in data:
-            print(dat)
+        url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?region=US&lang=en-US&includePrePost=false&interval=1m&useYfid=true&range=1d&corsDomain=finance.yahoo.com&.tsrc=finance"
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
+        res = requests.get(url, headers=headers)
+        data = json.loads(res.text)
+        try:
+            return float(data["chart"]["result"][0]["meta"]["regularMarketPrice"])
+        except TypeError:
+            return False
     elif ticker and coin:
         b_api_key = "8AiGAyxlhYQaRpE1s7097hx5sZ12Ogtr8ir9DsyztaD5j24LrI0fEoToDzCI5lle"
         b_api_secret = "VhudTs0HsBVFNdSTghmqfCjUuIXF6rFiXIfROxHIaM71TGgib7NeZ5aOsJUHjI9f"
         client = Client(b_api_key, b_api_secret)
         res = client.get_all_tickers()
-        for token in res:
-            if ticker == token["symbol"]:
-                return token["price"]
-        return False
+        if isinstance(ticker, str):
+            for c_ticker in res:
+                if ticker == c_ticker["symbol"]:
+                    return c_ticker["price"]
+            return False
+        elif isinstance(ticker, list):
+            tickers_prices = {}
+            for c_ticker in res:
+                if c_ticker["symbol"] in ticker:
+                    tickers_prices[c_ticker["symbol"]] = c_ticker["price"]
+            return tickers_prices
 
 
 def start(update, ctx):
@@ -44,7 +53,10 @@ def stock_price(update: Update, ctx: CallbackContext):
     if ticker_price:
         text = str(ticker_price)
     else:
-        text = "Could not find that ticker."
+        try:
+            text = str(round(get_ticker_price(ticker, False), 2))
+        except IndexError:
+            text = "Couldn't find that instrument."
     ctx.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
@@ -57,12 +69,13 @@ def alert(update: Update, ctx: CallbackContext):
         return
     elif ctx.args[0].lower() == "coin":
         coin = True
-    elif not coin:
-        ctx.bot.send_message(chat_id=update.effective_chat.id, text="Try again later.")
-        return
-    ticker = ctx.args[1]
-    alert_p = ctx.args[2]
+    stock_or_coin = ["coin" if coin else "stock"][0]
+    ticker = ctx.args[1].upper()
+    alert_p = float(ctx.args[2])
     tmp_price = get_ticker_price(ticker, coin)
+    if not tmp_price:
+        ctx.bot.send_message(chat_id=update.effective_chat.id, text=f"Couldn't find that {stock_or_coin}.")
+        return
     if tmp_price > alert_p:
         alert_status = "b"  # Alert below
     else:
@@ -82,7 +95,7 @@ def alert(update: Update, ctx: CallbackContext):
     with open(json_path, 'w') as f:
         json.dump(data, f, indent=2)
 
-    ctx.bot.send_message(chat_id=update.effective_chat.id, text=f"Made an alert for {ticker} at ${alert_p}")
+        ctx.bot.send_message(chat_id=update.effective_chat.id, text=f"Made an alert for {ticker} at ${alert_p}")
 
 
 def alert_user(user, ticker, price):
@@ -100,15 +113,33 @@ def check_alerts():
             data = json.load(f)
         except json.decoder.JSONDecodeError:
             return
+    all_coins = []
     for ticker in data:
-        is_c = data[ticker]["coin"]
-        ticker_p = get_ticker_price(ticker, is_c)
-        for user in data[ticker]["users"]:
-            for alert_p in data[ticker]["users"][user]:
-                alert_s = data[ticker]["users"][user][alert_p]
-                if (alert_s == "b" and alert_p > ticker_p) or (alert_s == "a" and alert_p < ticker_p):
-                    alert_user(user, ticker, alert_p)
-                    delete_alert(ticker, user, alert_p)
+        if data[ticker]["coin"]:
+            all_coins.append(ticker)
+    if all_coins:
+        coins_prices = get_ticker_price(all_coins, coin=True)
+        for ticker in data:
+            is_c = data[ticker]["coin"]
+            if is_c:
+                ticker_p = float(coins_prices[ticker])
+                # noinspection DuplicatedCode
+                for user in data[ticker]["users"]:
+                    for alert_p in data[ticker]["users"][user]:
+                        alert_s = data[ticker]["users"][user][alert_p]
+                        if (alert_s == "b" and float(alert_p) > ticker_p) or (alert_s == "a" and float(alert_p) < ticker_p):
+                            alert_user(user, ticker, alert_p)
+                            delete_alert(ticker, user, alert_p)
+    for ticker in data:
+        if not data[ticker]["coin"]:
+            ticker_p = get_ticker_price(ticker, False)
+            # noinspection DuplicatedCode
+            for user in data[ticker]["users"]:
+                for alert_p in data[ticker]["users"][user]:
+                    alert_s = data[ticker]["users"][user][alert_p]
+                    if (alert_s == "b" and float(alert_p) > ticker_p) or (alert_s == "a" and float(alert_p) < ticker_p):
+                        alert_user(user, ticker, alert_p)
+                        delete_alert(ticker, user, alert_p)
 
 
 def delete_alert(ticker, user, alert_p):
@@ -189,9 +220,14 @@ def check_empty_stock():
             delete_ticker(ticker)
 
 
+def change_sleep(update: Update, ctx: CallbackContext):
+    global sleep_time
+    sleep_time = int(ctx.args[0])
+    ctx.bot.send_message(chat_id=update.effective_chat.id, text=f"Changed sleep time to {ctx.args[0]}")
+
+
 def main():
     bot_token = "1871537273:AAFGJOKn5tPb92BZ1E20JpHnJGFfA7to4WA"
-
     updater = Updater(token=bot_token)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('start', start))
@@ -201,14 +237,16 @@ def main():
     dp.add_handler(CommandHandler("alert", alert))
     dp.add_handler(CommandHandler("alerts", my_alerts))
     dp.add_handler(CommandHandler("delete", delete_a))
+    dp.add_handler(CommandHandler("sleep", change_sleep))
     updater.start_polling()
     while True:
         check_empty_stock()
         check_alerts()
-        time.sleep(2)
+        time.sleep(sleep_time)
 
 
 if __name__ == '__main__':
     token = "1871537273:AAFGJOKn5tPb92BZ1E20JpHnJGFfA7to4WA"
     bot = telegram.Bot(token=token)
+    sleep_time = 2
     main()
