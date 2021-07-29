@@ -20,11 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da8f357f-bcc9-4762-9883-2da831bf612e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notifications/alerts.json" beforeDir="false" afterPath="$PROJECT_DIR$/Notifications/alerts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notifications/telegram_notifications.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notifications/telegram_notifications.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patterns/hammer.py" beforeDir="false" afterPath="$PROJECT_DIR$/patterns/hammer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CandleClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/CandleClass.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crypto/patterns.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/candle_class_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/candle_class_tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,28 +58,6 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.telegram_notifications">
-    <configuration name="Following rewrite" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Stocks-Strategies" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/OneDrive - Raanana Schools/Coding/Projects/School Project - Traffic Detection/Main" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/OneDrive - Raanana Schools/Coding/Projects/School Project - Traffic Detection/Main/Following rewrite.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="binance_api1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Stocks-Strategies" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -147,6 +124,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="patterns" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Stocks-Strategies" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/patterns" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/patterns/patterns.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="telegram_notifications" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Stocks-Strategies" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -171,18 +170,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.candle_class_tests" />
-      <item itemvalue="Python.Following rewrite" />
       <item itemvalue="Python.telegram_notifications" />
       <item itemvalue="Python.binance_api1" />
       <item itemvalue="Python.hammer" />
+      <item itemvalue="Python.patterns" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.telegram_notifications" />
+        <item itemvalue="Python.patterns" />
         <item itemvalue="Python.hammer" />
         <item itemvalue="Python.candle_class_tests" />
         <item itemvalue="Python.binance_api1" />
-        <item itemvalue="Python.Following rewrite" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +202,7 @@
       <workItem from="1603024199125" duration="9546000" />
       <workItem from="1603110928976" duration="1246000" />
       <workItem from="1625163653004" duration="35799000" />
-      <workItem from="1626783533754" duration="13546000" />
+      <workItem from="1626783533754" duration="25191000" />
     </task>
     <task id="LOCAL‎00001" summary="Morning star finished (I hope)&#10;&#10;Added Evening star, Volume threshold, SMA (14) for trend">
       <created>1602020690802</created>
@@ -244,22 +243,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625164296878" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1626980757187">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1627035664922">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1626980757187" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1626980757187">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1627035664922" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1627035664922">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1626980757187" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1626980757187">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1627035664922" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1627035664922">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1626980757187" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1626980757187">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1627035664922" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1627035664922">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1626980757187" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1627035664922" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1625164352276">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -268,16 +267,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1626787258607" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1626795227870">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1627058666119">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1626795227870" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627058666119" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rsi_calc_py$rsi_calc.coverage" NAME="rsi_calc Coverage Results" MODIFIED="1624562387135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/telegram_notifications_py$telegram_notifications.coverage" NAME="telegram_notifications Coverage Results" MODIFIED="1626980757180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Notifications" />
+    <SUITE FILE_PATH="coverage/telegram_notifications_py$telegram_notifications.coverage" NAME="telegram_notifications Coverage Results" MODIFIED="1627035664910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Notifications" />
     <SUITE FILE_PATH="coverage/hammer_py$hammer.coverage" NAME="hammer Coverage Results" MODIFIED="1603025221489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/patterns" />
     <SUITE FILE_PATH="coverage/hammer_py$Following_rewrite.coverage" NAME="Following rewrite Coverage Results" MODIFIED="1625419128975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/OneDrive - Raanana Schools/Coding/Projects/School Project - Traffic Detection/Main" />
+    <SUITE FILE_PATH="coverage/telegram_notifications_py$patterns.coverage" NAME="patterns Coverage Results" MODIFIED="1627019671465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/patterns" />
     <SUITE FILE_PATH="coverage/rsi_calc_py$binance_api1.coverage" NAME="binance_api1 Coverage Results" MODIFIED="1624619983408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Crypto" />
     <SUITE FILE_PATH="coverage/hammer_py$SMA_test.coverage" NAME="SMA_test Coverage Results" MODIFIED="1603055635426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Strategies" />
     <SUITE FILE_PATH="coverage/telegram_notifications_py$hammer.coverage" NAME="hammer Coverage Results" MODIFIED="1626788100936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/patterns" />

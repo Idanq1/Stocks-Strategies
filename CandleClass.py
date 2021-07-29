@@ -53,5 +53,9 @@ class Candle:
         """
         return ((self.close/self.open) * 100) - 100
 
-    def is_bullish_engulfing(self):
-        ...
+    def is_no_wick(self):
+        """
+        Returns if the candle has a wick. Also returns true if the wick is small considering to the body.
+        :return:
+        """
+        return self.body() >= (self.head()*5) and self.body() >= (self.tail()*5)
