@@ -7,6 +7,7 @@ class Candle:
         self.low = low
         self.date = date
         self.volume = volume
+        self.status = self.get_status()
 
     def head(self):
         """
@@ -51,7 +52,10 @@ class Candle:
         Returns change from open to close in percent
         :return:
         """
-        return ((self.close/self.open) * 100) - 100
+        try:
+            return ((self.close/self.open) * 100) - 100
+        except ZeroDivisionError:
+            return 0
 
     def is_no_wick(self):
         """
@@ -59,3 +63,10 @@ class Candle:
         :return:
         """
         return self.body() >= (self.head()*5) and self.body() >= (self.tail()*5)
+
+    def get_status(self):
+        """
+        Returns True if the candle is defined based on volume
+        :return:
+        """
+        return isinstance(self.volume, int) and self.volume > 0
