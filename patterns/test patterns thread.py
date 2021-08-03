@@ -104,16 +104,15 @@ def main(ticker, token="c43f8kiad3if0j0skdvg"):
 def allocate_tokens(tokens, all_tickers):
     allocated_tokens = {}
     for token in tokens:
-        allocated_tokens[token] = {"status": True, "tickers": []}  # Status means if I can use this key
-    while all_tickers:
+        allocated_tokens[token] = {"status": True, "tickers": []}
+    while True:
         for token in tokens:
-            n = 0
-            for ticker in all_tickers:
-                allocated_tokens[token]["tickers"].append(ticker)
-                all_tickers.pop(0)
-                n += 1
-                if n > 60:
-                    break
+            allocated_tokens[token]["tickers"].append(all_tickers[0])
+            all_tickers.pop(0)
+            if not all_tickers:
+                break
+        if not all_tickers:
+            break
     return allocated_tokens
 
 
@@ -129,9 +128,8 @@ if __name__ == '__main__':
                "three_outside_up": []}
     tested_tic = []
     allocated_tokens = allocate_tokens(tokens_list, get_tickers())
-    print(allocated_tokens)
     tickers = get_tickers()
-    while len(tickers) > 1:
+    while len(tickers) > 3:
         for token in tokens_list:
             for ticker in allocated_tokens[token]["tickers"]:
                 if not allocated_tokens[token]["status"]:
@@ -142,9 +140,9 @@ if __name__ == '__main__':
                 tested_tic.append(ticker)
                 main1 = threading.Thread(target=main, args=(ticker, token))
                 main1.start()
-                print(len(tickers))
                 tickers.remove(ticker)
-                print(ticker)
+        if len(tickers) == 0:
+            break
         time.sleep(59)
     main1.join()
     print(results)

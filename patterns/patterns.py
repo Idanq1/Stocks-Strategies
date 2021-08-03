@@ -20,7 +20,7 @@ class Candles:
         Returns if the candles form a bullish engulfing https://candlestick.co.il/bullish-engulfing
         :return bool:
         """
-        if (not self.candle2.is_green() and self.candle1.is_green()) and self.candle2.open < self.candle3.close < self.candle3.open < self.candle2.close:
+        if (not self.candle2.is_green() and self.candle1.is_green()) and self.candle1.open < self.candle2.close < self.candle2.open < self.candle1.close:
             return True
         return False
 
@@ -114,7 +114,7 @@ class Candles:
         :return bool:
         """
         if not self.candle3.is_green() and self.candle2.is_green() and self.candle2.open > self.candle3.close and self.candle2.close < self.candle3.open:  # Bullish harami
-            if self.candle1.close > self.candle2.close:
+            if self.candle1.is_green() and self.candle1.close > self.candle2.close:
                 return True
 
     def is_bullish_harami(self):

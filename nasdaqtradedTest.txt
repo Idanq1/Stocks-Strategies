@@ -1,0 +1,259 @@
+Nasdaq Traded|Symbol|Security Name|Listing Exchange|Market Category|ETF|Round Lot Size|Test Issue|Financial Status|CQS Symbol|NASDAQ Symbol|NextShares
+Y|A|Agilent Technologies, Inc. Common Stock|N| |N|100|N||A|A|N
+Y|AA|Alcoa Corporation Common Stock |N| |N|100|N||AA|AA|N
+Y|AAA|Listed Funds Trust AAF First Priority CLO Bond ETF|P| |Y|100|N||AAA|AAA|N
+Y|AAAU|Goldman Sachs Physical Gold ETF Shares|P| |Y|100|N||AAAU|AAAU|N
+Y|AAC|Ares Acquisition Corporation Class A Ordinary Shares|N| |N|100|N||AAC|AAC|N
+Y|AAC.U|Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant|N| |N|100|N||AAC.U|AAC=|N
+Y|AAC.W|Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50|N| |N|100|N||AAC.WS|AAC+|N
+Y|AACG|ATA Creativity Global - American Depositary Shares, each representing two common shares|Q|G|N|100|N|N||AACG|N
+Y|AADR|AdvisorShares Dorsey Wright ADR ETF|Q|G|Y|100|N|N||AADR|N
+Y|AAIC|Arlington Asset Investment Corp Class A (new)|N| |N|100|N||AAIC|AAIC|N
+Y|AAIC$B|Arlington Asset Investment Corp 7.00% |N| |N|100|N||AAICpB|AAIC-B|N
+Y|AAIC$C|Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   |N| |N|100|N||AAICpC|AAIC-C|N
+Y|AAIN|Arlington Asset Investment Corp 6.000% Senior Notes Due 2026|N| |N|100|N||AAIN|AAIN|N
+Y|AAL|American Airlines Group, Inc. - Common Stock|Q|Q|N|100|N|N||AAL|N
+Y|AAMC|Altisource Asset Management Corp Com|A| |N|100|N||AAMC|AAMC|N
+Y|AAME|Atlantic American Corporation - Common Stock|Q|G|N|100|N|N||AAME|N
+Y|AAN|Aarons Holdings Company, Inc. Common Stock |N| |N|100|N||AAN|AAN|N
+Y|AAOI|Applied Optoelectronics, Inc. - Common Stock|Q|G|N|100|N|N||AAOI|N
+Y|AAON|AAON, Inc. - Common Stock|Q|Q|N|100|N|N||AAON|N
+Y|AAP|Advance Auto Parts Inc Advance Auto Parts Inc W/I|N| |N|100|N||AAP|AAP|N
+Y|AAPL|Apple Inc. - Common Stock|Q|Q|N|100|N|N||AAPL|N
+Y|AAQC|Accelerate Acquisition Corp. Class A Common Stock|N| |N|100|N||AAQC|AAQC|N
+Y|AAQC.U|Accelerate Acquisition Corp. Units, each consisting of one Class A common stock, and one-third of one redeemable warrant|N| |N|100|N||AAQC.U|AAQC=|N
+Y|AAQC.W|Accelerate Acquisition Corp. Warrants, each whole warrant exercisable for one share of Class A common stock at an exercise price of $11.50|N| |N|100|N||AAQC.WS|AAQC+|N
+Y|AAT|American Assets Trust, Inc. Common Stock|N| |N|100|N||AAT|AAT|N
+Y|AATC|Autoscope Technologies Corporation - Common Stock|Q|S|N|100|N|N||AATC|N
+Y|AAU|Almaden Minerals, Ltd. Common Shares|A| |N|100|N||AAU|AAU|N
+Y|AAWW|Atlas Air Worldwide Holdings - Common Stock|Q|Q|N|100|N|N||AAWW|N
+Y|AAXJ|iShares MSCI All Country Asia ex Japan Index Fund|Q|G|Y|100|N|N||AAXJ|N
+Y|AB|AllianceBernstein Holding L.P.  Units|N| |N|100|N||AB|AB|N
+Y|ABB|ABB Ltd Common Stock|N| |N|100|N||ABB|ABB|N
+Y|ABBV|AbbVie Inc. Common Stock|N| |N|100|N||ABBV|ABBV|N
+Y|ABC|AmerisourceBergen Corporation Common Stock|N| |N|100|N||ABC|ABC|N
+Y|ABCB|Ameris Bancorp - Common Stock|Q|Q|N|100|N|N||ABCB|N
+Y|ABCL|AbCellera Biologics Inc. - Common Shares|Q|Q|N|100|N|N||ABCL|N
+Y|ABCM|Abcam plc - American Depositary Shares|Q|Q|N|100|N|N||ABCM|N
+Y|ABEO|Abeona Therapeutics Inc. - Common Stock|Q|S|N|100|N|N||ABEO|N
+Y|ABEQ|Absolute Core Strategy ETF|P| |Y|100|N||ABEQ|ABEQ|N
+Y|ABEV|Ambev S.A. American Depositary Shares (Each representing 1 Common Share)|N| |N|100|N||ABEV|ABEV|N
+Y|ABG|Asbury Automotive Group Inc Common Stock|N| |N|100|N||ABG|ABG|N
+Y|ABGI|ABG Acquisition Corp. I - Class A Ordinary Shares|Q|S|N|100|N|N||ABGI|N
+Y|ABIO|ARCA biopharma, Inc. - Common Stock|Q|S|N|100|N|N||ABIO|N
+Y|ABM|ABM Industries Incorporated Common Stock|N| |N|100|N||ABM|ABM|N
+Y|ABMD|ABIOMED, Inc. - Common Stock|Q|Q|N|100|N|N||ABMD|N
+Y|ABNB|Airbnb, Inc. - Class A Common Stock|Q|Q|N|100|N|N||ABNB|N
+Y|ABOS|Acumen Pharmaceuticals, Inc. - Common Stock|Q|Q|N|100|N|N||ABOS|N
+Y|ABR|Arbor Realty Trust Common Stock|N| |N|100|N||ABR|ABR|N
+Y|ABR$D|Arbor Realty Trust 6.375% Series D Cumulative Redeemable Preferred Stock, Liquidation Preference $25.00 per Share|N| |N|100|N||ABRpD|ABR-D|N
+Y|ABSI|Absci Corporation - Common Stock|Q|Q|N|100|N|N||ABSI|N
+Y|ABST|Absolute Software Corporation - Common Stock|Q|Q|N|100|N|N||ABST|N
+Y|ABT|Abbott Laboratories Common Stock|N| |N|100|N||ABT|ABT|N
+Y|ABTX|Allegiance Bancshares, Inc. - Common Stock|Q|G|N|100|N|N||ABTX|N
+Y|ABUS|Arbutus Biopharma Corporation - Common Stock|Q|Q|N|100|N|N||ABUS|N
+Y|AC|Associated Capital Group, Inc. Common Stock|N| |N|100|N||AC|AC|N
+Y|ACA|Arcosa, Inc. Common Stock |N| |N|100|N||ACA|ACA|N
+Y|ACAD|ACADIA Pharmaceuticals Inc. - Common Stock|Q|Q|N|100|N|N||ACAD|N
+Y|ACAH|Atlantic Coastal Acquisition Corp. - Class A Common Stock|Q|S|N|100|N|N||ACAH|N
+Y|ACAHU|Atlantic Coastal Acquisition Corp. - Unit|Q|S|N|100|N|N||ACAHU|N
+Y|ACAHW|Atlantic Coastal Acquisition Corp. - Warrant|Q|S|N|100|N|N||ACAHW|N
+Y|ACB|Aurora Cannabis Inc. - Common Shares|Q|Q|N|100|N|N||ACB|N
+Y|ACBA|Ace Global Business Acquisition Limited - Ordinary Shares|Q|S|N|100|N|N||ACBA|N
+Y|ACBAU|Ace Global Business Acquisition Limited - Unit|Q|S|N|100|N|N||ACBAU|N
+Y|ACBAW|Ace Global Business Acquisition Limited - Warrant|Q|S|N|100|N|N||ACBAW|N
+Y|ACBI|Atlantic Capital Bancshares, Inc. - Common Stock|Q|Q|N|100|N|N||ACBI|N
+Y|ACC|American Campus Communities Inc Common Stock|N| |N|100|N||ACC|ACC|N
+Y|ACCD|Accolade, Inc. - common stock|Q|Q|N|100|N|N||ACCD|N
+Y|ACCO|Acco Brands Corporation Common Stock|N| |N|100|N||ACCO|ACCO|N
+Y|ACEL|Accel Entertainment, Inc. |N| |N|100|N||ACEL|ACEL|N
+Y|ACER|Acer Therapeutics Inc. - Common Stock|Q|S|N|100|N|N||ACER|N
+Y|ACES|ALPS Clean Energy ETF|P| |Y|100|N||ACES|ACES|N
+Y|ACET|Adicet Bio, Inc. - Common Stock|Q|G|N|100|N|N||ACET|N
+Y|ACEV|ACE Convergence Acquisition Corp. - Class A Ordinary Shares|Q|S|N|100|N|N||ACEV|N
+Y|ACEVU|ACE Convergence Acquisition Corp. - Unit|Q|S|N|100|N|N||ACEVU|N
+Y|ACEVW|ACE Convergence Acquisition Corp. - Warrant|Q|S|N|100|N|N||ACEVW|N
+Y|ACGL|Arch Capital Group Ltd. - Common Stock|Q|Q|N|100|N|N||ACGL|N
+Y|ACGLN|Arch Capital Group Ltd. - Depositary Shares, each Representing a 1/1,000th Interest in a 4.550% Non-Cumulative Preferred Share, Series G|Q|Q|N|100|N|N||ACGLN|N
+Y|ACGLO|Arch Capital Group Ltd. - Depositary Shares Each Representing 1/1,000th Interest in a Share of5.45% Non-Cumulative Preferred Shares, Series F|Q|Q|N|100|N|N||ACGLO|N
+Y|ACGLP|Arch Capital Group Ltd. - Depositary Shares Representing Interest in 5.25% Non-Cumulative Preferred Series E Shrs|Q|Q|N|100|N|N||ACGLP|N
+Y|ACH|Aluminum Corporation of China Limited American Depositary Shares|N| |N|100|N||ACH|ACH|N
+Y|ACHC|Acadia Healthcare Company, Inc. - Common Stock|Q|Q|N|100|N|N||ACHC|N
+Y|ACHL|Achilles Therapeutics plc - American Depositary Shares|Q|Q|N|100|N|N||ACHL|N
+Y|ACHV|Achieve Life Sciences, Inc.  - Common Shares|Q|S|N|100|N|N||ACHV|N
+Y|ACI|Albertsons Companies, Inc. Class A Common Stock|N| |N|100|N||ACI|ACI|N
+Y|ACIC|Atlas Crest Investment Corp. Class A Common Stock|N| |N|100|N||ACIC|ACIC|N
+Y|ACIC.U|Atlas Crest Investment Corp. Units, each consisting of one Class A common stock, and one-third of one redeemable warrant|N| |N|100|N||ACIC.U|ACIC=|N
+Y|ACIC.W|Atlas Crest Investment Corp. Redeemable warrants included as part of the units, each whole warrant exercisable for one Class A common stock at an exercise price of $11.50|N| |N|100|N||ACIC.WS|ACIC+|N
+Y|ACII|Atlas Crest Investment Corp. II Class A Common Stock|N| |N|100|N||ACII|ACII|N
+Y|ACII.U|Atlas Crest Investment Corp. II Units, each consisting of one Class A common stock, $.0001 par value, and one-fourth of one redeemable warrant|N| |N|100|N||ACII.U|ACII=|N
+Y|ACII.W|Atlas Crest Investment Corp. II Redeemable Warrants, each whole warrant exercisable for one Class A common stock at an exercise price of $11.50|N| |N|100|N||ACII.WS|ACII+|N
+Y|ACIO|ETF Series Solutions Aptus Collared Income Opportunity ETF|Z| |Y|100|N||ACIO|ACIO|N
+Y|ACIU|AC Immune SA - Common Stock|Q|G|N|100|N|N||ACIU|N
+Y|ACIW|ACI Worldwide, Inc. - Common Stock|Q|Q|N|100|N|N||ACIW|N
+Y|ACKIT|Ackrell SPAC Partners I Co.  - Subunits|Q|S|N|100|N|N||ACKIT|N
+Y|ACKIU|Ackrell SPAC Partners I Co.  - Units|Q|S|N|100|N|N||ACKIU|N
+Y|ACKIW|Ackrell SPAC Partners I Co.  - Warrants|Q|S|N|100|N|N||ACKIW|N
+Y|ACLS|Axcelis Technologies, Inc. - Common Stock|Q|Q|N|100|N|N||ACLS|N
+Y|ACM|AECOM Common Stock|N| |N|100|N||ACM|ACM|N
+Y|ACMR|ACM Research, Inc. - Class A Common Stock|Q|G|N|100|N|N||ACMR|N
+Y|ACN|Accenture plc Class A Ordinary Shares (Ireland)|N| |N|100|N||ACN|ACN|N
+Y|ACNB|ACNB Corporation - Common Stock|Q|S|N|100|N|N||ACNB|N
+Y|ACOR|Acorda Therapeutics, Inc. - Common Stock|Q|Q|N|100|N|N||ACOR|N
+Y|ACP|Aberdeen Income Credit Strategies Fund Common Shares|N| |N|100|N||ACP|ACP|N
+Y|ACP$A|Aberdeen Income Credit Strategies Fund 5.250% Series A Perpetual Preferred Stock|N| |N|100|N||ACPpA|ACP-A|N
+Y|ACQR|Independence Holdings Corp. - Class A Ordinary Share|Q|S|N|100|N|N||ACQR|N
+Y|ACQRU|Independence Holdings Corp. - Units|Q|S|N|100|N|N||ACQRU|N
+Y|ACQRW|Independence Holdings Corp. - Warrant|Q|S|N|100|N|N||ACQRW|N
+Y|ACR|ACRES Commercial Realty Corp. Common Stock|N| |N|100|N||ACR|ACR|N
+Y|ACR$C|ACRES Commercial Realty Corp. 8.625% Fixed-to-Floating Series C Cumulative Redeemable Preferred Stock |N| |N|100|N||ACRpC|ACR-C|N
+Y|ACR$D|ACRES Commercial Realty Corp. 7.875% Series D Cumulative Redeemable Preferred Stock|N| |N|100|N||ACRpD|ACR-D|N
+Y|ACRE|Ares Commercial Real Estate Corporation Common Stock|N| |N|100|N||ACRE|ACRE|N
+Y|ACRO.U|Acropolis Infrastructure Acquisition Corp. Units, each consisting of one share of Class A Common Stock and one-third of one Warrant|N| |N|100|N||ACRO.U|ACRO=|N
+Y|ACRS|Aclaris Therapeutics, Inc. - Common Stock|Q|Q|N|100|N|N||ACRS|N
+Y|ACRX|AcelRx Pharmaceuticals, Inc. - Common Stock|Q|G|N|100|N|N||ACRX|N
+Y|ACSG|Xtrackers MSCI ACWI ex USA ESG Leaders Equity ETF|P| |Y|100|N||ACSG|ACSG|N
+Y|ACSI|American Customer Satisfaction ETF|Z| |Y|100|N||ACSI|ACSI|N
+Y|ACST|Acasti Pharma, Inc.  - Class A Common Stock|Q|S|N|100|N|D||ACST|N
+Y|ACTD|ArcLight Clean Transition Corp. II - Class A Ordinary Share|Q|S|N|100|N|N||ACTD|N
+Y|ACTDU|ArcLight Clean Transition Corp. II - Unit|Q|S|N|100|N|N||ACTDU|N
+Y|ACTDW|ArcLight Clean Transition Corp. II - Warrant|Q|S|N|100|N|N||ACTDW|N
+Y|ACTG|Acacia Research Corporation - Common Stock|Q|Q|N|100|N|N||ACTG|N
+Y|ACTV|LeaderShares Activist Leaders ETF|P| |Y|100|N||ACTV|ACTV|N
+Y|ACU|Acme United Corporation. Common Stock|A| |N|100|N||ACU|ACU|N
+Y|ACV|Virtus AllianzGI Diversified Income & Convertible Fund Common Shares of Beneficial Interest|N| |N|100|N||ACV|ACV|N
+Y|ACVA|ACV Auctions Inc. - Class A Common Stock|Q|Q|N|100|N|N||ACVA|N
+Y|ACVF|American Conservative Values ETF|P| |Y|100|N||ACVF|ACVF|N
+Y|ACWF|iShares MSCI Global Multifactor ETF|P| |Y|100|N||ACWF|ACWF|N
+Y|ACWI|iShares MSCI ACWI Index Fund|Q|G|Y|100|N|N||ACWI|N
+Y|ACWV|iShares MSCI Global Min Vol Factor ETF|Z| |Y|100|N||ACWV|ACWV|N
+Y|ACWX|iShares MSCI ACWI ex US Index Fund|Q|G|Y|100|N|N||ACWX|N
+Y|ACXP|Acurx Pharmaceuticals, Inc. - Common Stock|Q|S|N|100|N|N||ACXP|N
+Y|ACY|AeroCentury Corp. Common Stock|A| |N|100|N||ACY|ACY|N
+Y|ADAG|Adagene Inc. - ADS, each representing 1.25 ordinary shares|Q|G|N|100|N|N||ADAG|N
+Y|ADAP|Adaptimmune Therapeutics plc - American Depositary Shares|Q|Q|N|100|N|N||ADAP|N
+Y|ADBE|Adobe Inc. - Common Stock|Q|Q|N|100|N|N||ADBE|N
+Y|ADC|Agree Realty Corporation Common Stock|N| |N|100|N||ADC|ADC|N
+Y|ADCT|ADC Therapeutics SA Common Shares|N| |N|100|N||ADCT|ADCT|N
+Y|ADER|26 Capital Acquisition Corp. - Class A Common Stock|Q|S|N|100|N|N||ADER|N
+Y|ADERU|26 Capital Acquisition Corp. - Unit|Q|S|N|100|N|N||ADERU|N
+Y|ADERW|26 Capital Acquisition Corp. - Warrant|Q|S|N|100|N|N||ADERW|N
+Y|ADES|Advanced Emissions Solutions, Inc. - Common Stock|Q|G|N|100|N|N||ADES|N
+Y|ADEX|Adit EdTech Acquisition Corp. Common Stock|N| |N|100|N||ADEX|ADEX|N
+Y|ADEX.U|Adit EdTech Acquisition Corp. Units, each consisting of one share of common stock, and one-half of one redeemable warrant|N| |N|100|N||ADEX.U|ADEX=|N
+Y|ADEX.W|Adit EdTech Acquisition Corp. Redeemable Warrants, each whole warrant exercisable for shares of common stock at an exercise price of $11.50 per share|N| |N|100|N||ADEX.WS|ADEX+|N
+Y|ADF|Aldel Financial Inc. Class A Common Stock|N| |N|100|N||ADF|ADF|N
+Y|ADF.U|Aldel Financial Inc. Units, each consisting of one share of Class A common stock and one-half of one redeemable warrant|N| |N|100|N||ADF.U|ADF=|N
+Y|ADF.W|Aldel Financial Inc. Warrants, each whole warrant entitles the holder thereof to purchase one share of Class A common stock at a price of $11.50 per share|N| |N|100|N||ADF.WS|ADF+|N
+Y|ADFI|Anfield Dynamic Fixed Income ETF|Z| |Y|100|N||ADFI|ADFI|N
+Y|ADI|Analog Devices, Inc. - Common Stock|Q|Q|N|100|N|N||ADI|N
+Y|ADIL|Adial Pharmaceuticals, Inc - Common Stock|Q|S|N|100|N|N||ADIL|N
+Y|ADILW|Adial Pharmaceuticals, Inc - Warrant|Q|S|N|100|N|N||ADILW|N
+Y|ADIV|SmartETFs Asia Pacific Dividend Builder ETF|P| |Y|100|N||ADIV|ADIV|N
+Y|ADM|Archer-Daniels-Midland Company Common Stock|N| |N|100|N||ADM|ADM|N
+Y|ADMA|ADMA Biologics Inc - Common Stock|Q|G|N|100|N|N||ADMA|N
+Y|ADME|Aptus Drawdown Managed Equity ETF|Z| |Y|100|N||ADME|ADME|N
+Y|ADMP|Adamis Pharmaceuticals Corporation - Common Stock|Q|S|N|100|N|E||ADMP|N
+Y|ADMS|Adamas Pharmaceuticals, Inc. - Common Stock|Q|G|N|100|N|N||ADMS|N
+Y|ADN|Advent Technologies Holdings, Inc. - Class A Common Stock|Q|S|N|100|N|N||ADN|N
+Y|ADNT|Adient plc Ordinary Shares |N| |N|100|N||ADNT|ADNT|N
+Y|ADNWW|Advent Technologies Holdings, Inc. - Warrant|Q|S|N|100|N|N||ADNWW|N
+Y|ADOC|Edoc Acquisition Corp. - Class A Ordinary Share|Q|S|N|100|N|N||ADOC|N
+Y|ADOCR|Edoc Acquisition Corp. - Right|Q|S|N|100|N|N||ADOCR|N
+Y|ADOCW|Edoc Acquisition Corp. - Warrant|Q|S|N|100|N|N||ADOCW|N
+Y|ADP|Automatic Data Processing, Inc. - Common Stock|Q|Q|N|100|N|N||ADP|N
+Y|ADPT|Adaptive Biotechnologies Corporation - Common Stock|Q|Q|N|100|N|N||ADPT|N
+Y|ADRA|Adara Acquisition Corp. Class A Common Stock|A| |N|100|N||ADRA|ADRA|N
+Y|ADRA.U|Adara Acquisition Corp. Units, each consisting of one share of Class A common stock, and one-half of one redeemable warrant|A| |N|100|N||ADRA.U|ADRA=|N
+Y|ADRA.W|Adara Acquisition Corp. Redeemable Warrants, each whole warrant exercisable for one share of Class A Common Stock at an exercise price of $11.50|A| |N|100|N||ADRA.WS|ADRA+|N
+Y|ADRE|Invesco BLDRS Emerging Markets 50 ADR Index Fund|Q|G|Y|100|N|N||ADRE|N
+Y|ADS|Alliance Data Systems Corporation Common Stock|N| |N|100|N||ADS|ADS|N
+Y|ADSK|Autodesk, Inc. - Common Stock|Q|Q|N|100|N|N||ADSK|N
+Y|ADT|ADT Inc. Common Stock|N| |N|100|N||ADT|ADT|N
+Y|ADTN|ADTRAN, Inc. - Common Stock|Q|Q|N|100|N|N||ADTN|N
+Y|ADTX|Aditxt, Inc. - Common Stock|Q|S|N|100|N|N||ADTX|N
+Y|ADUS|Addus HomeCare Corporation - Common Stock|Q|Q|N|100|N|N||ADUS|N
+Y|ADV|Advantage Solutions Inc.  - Class A Common Stock|Q|Q|N|100|N|N||ADV|N
+Y|ADVM|Adverum Biotechnologies, Inc. - Common Stock|Q|G|N|100|N|N||ADVM|N
+Y|ADVWW|Advantage Solutions Inc.  - Warrant|Q|Q|N|100|N|N||ADVWW|N
+Y|ADX|Adams Diversified Equity Fund Inc.|N| |N|100|N||ADX|ADX|N
+Y|ADXN|Addex Therapeutics Ltd - American Depositary Shares|Q|S|N|100|N|N||ADXN|N
+Y|ADXS|Advaxis, Inc.  - Common Stock|Q|S|N|100|N|D||ADXS|N
+Y|AE|Adams Resources & Energy, Inc. Common Stock|A| |N|100|N||AE|AE|N
+Y|AEAC|Authentic Equity Acquisition Corp. - Class A ordinary share|Q|S|N|100|N|N||AEAC|N
+Y|AEACU|Authentic Equity Acquisition Corp. - Unit|Q|S|N|100|N|N||AEACU|N
+Y|AEACW|Authentic Equity Acquisition Corp. - Warrant|Q|S|N|100|N|N||AEACW|N
+Y|AEB|AEGON N.V. Perp. Cap. Secs. Floating Rate (Netherlands)|N| |N|100|N||AEB|AEB|N
+Y|AEE|Ameren Corporation Common Stock|N| |N|100|N||AEE|AEE|N
+Y|AEF|Aberdeen Emerging Markets Equity Income Fund, Inc. Common Stock|A| |N|100|N||AEF|AEF|N
+Y|AEFC|Aegon Funding Company LLC 5.10% Subordinated Notes due 2049|N| |N|100|N||AEFC|AEFC|N
+Y|AEG|AEGON N.V. Common Stock|N| |N|100|N||AEG|AEG|N
+Y|AEHL|Antelope Enterprise Holdings Limited - Common Stock|Q|S|N|100|N|N||AEHL|N
+Y|AEHR|Aehr Test Systems - Common Stock|Q|S|N|100|N|N||AEHR|N
+Y|AEI|Alset EHome International Inc. - Common Stock|Q|S|N|100|N|N||AEI|N
+Y|AEIS|Advanced Energy Industries, Inc. - Common Stock|Q|Q|N|100|N|N||AEIS|N
+Y|AEL|American Equity Investment Life Holding Company Common Stock|N| |N|100|N||AEL|AEL|N
+Y|AEL$A|American Equity Investment Life Holding Company Depositary Shares, each representing a 1/1,000th interest in a share of 5.95% Fixed-Rate Reset Non-Cumulative Preferred Stock, Series A|N| |N|100|N||AELpA|AEL-A|N
+Y|AEL$B|American Equity Investment Life Holding Company Depositary Shares, each representing a 1/1,000th interest in a share of 6.625% Fixed-Rate Reset Non-Cumulative Preferred Stock, Series B|N| |N|100|N||AELpB|AEL-B|N
+Y|AEM|Agnico Eagle Mines Limited Common Stock|N| |N|100|N||AEM|AEM|N
+Y|AEMB|American Century Emerging Markets Bond ETF|P| |Y|100|N||AEMB|AEMB|N
+Y|AEMD|Aethlon Medical, Inc. - Common Stock|Q|S|N|100|N|N||AEMD|N
+Y|AENZ|Aenza S.A.A. American Depositary Shares|N| |N|100|N||AENZ|AENZ|N
+Y|AEO|American Eagle Outfitters, Inc. Common Stock|N| |N|100|N||AEO|AEO|N
+Y|AEP|American Electric Power Company, Inc. - Common Stock|Q|Q|N|100|N|N||AEP|N
+Y|AEPPL|American Electric Power Company, Inc. - Corporate Unit|Q|Q|N|100|N|N||AEPPL|N
+Y|AEPPZ|American Electric Power Company, Inc. - Corporate Unit|Q|Q|N|100|N|N||AEPPZ|N
+Y|AER|AerCap Holdings N.V. Ordinary Shares|N| |N|100|N||AER|AER|N
+Y|AERI|Aerie Pharmaceuticals, Inc. - Common Stock|Q|G|N|100|N|N||AERI|N
+Y|AES|The AES Corporation Common Stock|N| |N|100|N||AES|AES|N
+Y|AESC|The AES Corporation Corporate Units|N| |N|100|N||AESC|AESC|N
+Y|AESE|Allied Esports Entertainment, Inc. - Common Stock|Q|S|N|100|N|N||AESE|N
+Y|AESR|Anfield U.S. Equity Sector Rotation ETF|Z| |Y|100|N||AESR|AESR|N
+Y|AEVA|Aeva Technologies, Inc. Common Stock|N| |N|100|N||AEVA|AEVA|N
+Y|AEVA.W|Aeva Technologies, Inc. Redeemable Warrants, each whole warrant exercisable for shares of common stock at an exercise price of $11.50 per share|N| |N|100|N||AEVA.WS|AEVA+|N
+Y|AEY|ADDvantage Technologies Group, Inc. - Common Stock|Q|G|N|100|N|N||AEY|N
+Y|AEYE|AudioEye, Inc. - Common Stock|Q|S|N|100|N|N||AEYE|N
+Y|AEZS|Aeterna Zentaris Inc. - Common Stock|Q|S|N|100|N|N||AEZS|N
+Y|AFAQ|AF Acquisition Corp. - Common Stock|Q|S|N|100|N|N||AFAQ|N
+Y|AFAQU|AF Acquisition Corp. - Units|Q|S|N|100|N|N||AFAQU|N
+Y|AFAQW|AF Acquisition Corp. - Warrants|Q|S|N|100|N|N||AFAQW|N
+Y|AFB|AllianceBernstein National Municipal Income Fund Inc|N| |N|100|N||AFB|AFB|N
+Y|AFBI|Affinity Bancshares, Inc. - Common Stock|Q|S|N|100|N|N||AFBI|N
+Y|AFCG|AFC Gamma, Inc. - Common Stock|Q|G|N|100|N|N||AFCG|N
+Y|AFG|American Financial Group, Inc. Common Stock|N| |N|100|N||AFG|AFG|N
+Y|AFGB|American Financial Group, Inc. 5.875% Subordinated Debentures due 2059|N| |N|100|N||AFGB|AFGB|N
+Y|AFGC|American Financial Group, Inc. 5.125% Subordinated Debentures due 2059|N| |N|100|N||AFGC|AFGC|N
+Y|AFGD|American Financial Group, Inc. 5.625% Subordinated Debentures due 2060|N| |N|100|N||AFGD|AFGD|N
+Y|AFGE|American Financial Group, Inc. 4.500% Subordinated Debentures due 2060|N| |N|100|N||AFGE|AFGE|N
+Y|AFI|Armstrong Flooring, Inc. Common Stock|N| |N|100|N||AFI|AFI|N
+Y|AFIB|Acutus Medical, Inc. - Common Stock|Q|Q|N|100|N|N||AFIB|N
+Y|AFIF|Anfield Universal Fixed Income ETF|Z| |Y|100|N||AFIF|AFIF|N
+Y|AFIN|American Finance Trust, Inc. - Class A Common Stock|Q|Q|N|100|N|N||AFIN|N
+Y|AFINO|American Finance Trust, Inc. - 7.375% Series C Cumulative Redeemable Preferred Stock|Q|Q|N|100|N|N||AFINO|N
+Y|AFINP|American Finance Trust, Inc. - 7.50% Series A Cumulative Redeemable Perpetual Preferred Stock|Q|Q|N|100|N|N||AFINP|N
+Y|AFK|VanEck Vectors-Africa Index ETF|P| |Y|100|N||AFK|AFK|N
+Y|AFL|AFLAC Incorporated Common Stock|N| |N|100|N||AFL|AFL|N
+Y|AFLG|First Trust Active Factor Large Cap ETF|P| |Y|100|N||AFLG|AFLG|N
+Y|AFMC|First Trust Active Factor Mid Cap ETF|P| |Y|100|N||AFMC|AFMC|N
+Y|AFMD|Affimed N.V. - Common Stock|Q|G|N|100|N|N||AFMD|N
+Y|AFRM|Affirm Holdings, Inc. - Class A Common Stock|Q|Q|N|100|N|N||AFRM|N
+Y|AFSM|First Trust Active Factor Small Cap ETF|P| |Y|100|N||AFSM|AFSM|N
+Y|AFT|Apollo Senior Floating Rate Fund Inc. Common Stock|N| |N|100|N||AFT|AFT|N
+Y|AFTY|Pacer CSOP FTSE China A50 ETF|P| |Y|100|N||AFTY|AFTY|N
+Y|AFYA|Afya Limited - Class A Common Shares|Q|Q|N|100|N|N||AFYA|N
+Y|AG|First Majestic Silver Corp. Ordinary Shares (Canada)|N| |N|100|N||AG|AG|N
+Y|AGAC|African Gold Acquisition Corporation Class A Ordinary Shares|N| |N|100|N||AGAC|AGAC|N
+Y|AGAC.U|African Gold Acquisition Corporation Units, each consisting of one Class A ordinary share and three-quarters of one redeemable warrant|N| |N|100|N||AGAC.U|AGAC=|N
+Y|AGAC.W|African Gold Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50|N| |N|100|N||AGAC.WS|AGAC+|N
+Y|AGBA|AGBA Acquisition Limited - Ordinary Share|Q|S|N|100|N|N||AGBA|N
+Y|AGBAR|AGBA Acquisition Limited - Right|Q|S|N|100|N|N||AGBAR|N
+Y|AGBAU|AGBA Acquisition Limited - Unit|Q|S|N|100|N|N||AGBAU|N
+Y|AGBAW|AGBA Acquisition Limited - Warrant|Q|S|N|100|N|N||AGBAW|N
+Y|AGC|Altimeter Growth Corp. - Class A Ordinary Shares|Q|S|N|100|N|N||AGC|N
+Y|AGCB|Altimeter Growth Corp. 2 Class A Ordinary Shares|N| |N|100|N||AGCB|AGCB|N
+Y|AGCO|AGCO Corporation Common Stock|N| |N|100|N||AGCO|AGCO|N
+Y|AGCUU|Altimeter Growth Corp. - Unit|Q|S|N|100|N|N||AGCUU|N
+Y|AGCWW|Altimeter Growth Corp. - Warrant|Q|S|N|100|N|N||AGCWW|N
+Y|AGD|Aberdeen Global Dynamic Dividend Fund|N| |N|100|N||AGD|AGD|N
+Y|AGE|AgeX Therapeutics, Inc. Common Stock|A| |N|100|N||AGE|AGE|N
+File Creation Time: 0730202108:02|||||
