@@ -1,6 +1,6 @@
 import json
 from CandleClass import Candle
-from patterns import Candles
+from patterns.patterns import Candles
 import time
 import finnhub
 import datetime
@@ -15,11 +15,14 @@ def download_candles(ticker, period=4, interval="D", token=None):
         period += 1
     elif day == 0:
         period += 2
+    elif day == 1:
+        period += 2
     start_time = datetime.datetime.now() - datetime.timedelta(days=period)
     finnhub_client = finnhub.Client(api_key=token)
     try:
         candles_data = finnhub_client.stock_candles(ticker, interval, int(start_time.timestamp()), int(time.time()))
     except Exception as e:
+        print(e)
         exception_status = e.status_code
         return exception_status
         # 429- limit error

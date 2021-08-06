@@ -226,11 +226,20 @@ def change_sleep(update: Update, ctx: CallbackContext):
     ctx.bot.send_message(chat_id=update.effective_chat.id, text=f"Changed sleep time to {ctx.args[0]}")
 
 
+def trend_alert(update: Update, ctx: CallbackContext):
+    if ctx.args != 6:
+        ctx.bot.send_message(chat_id=update.effective_chat.id, text="Not enough arguments")
+        return
+    is_coin, ticker, pt1_p, pt1_d, pt2_p, pt2_d = ctx.args
+    is_coin = [True if is_coin == "coin" else False]
+    
+
 def main():
     bot_token = "1871537273:AAFGJOKn5tPb92BZ1E20JpHnJGFfA7to4WA"
     updater = Updater(token=bot_token)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('start', start))
+    dp.add_handler(CommandHandler('help', start))
     dp.add_handler(CommandHandler('echo', echo))
     dp.add_handler(CommandHandler('price', stock_price))
     dp.add_handler(CommandHandler('id', my_id))
@@ -238,6 +247,7 @@ def main():
     dp.add_handler(CommandHandler("alerts", my_alerts))
     dp.add_handler(CommandHandler("delete", delete_a))
     dp.add_handler(CommandHandler("sleep", change_sleep))
+    dp.add_handler(CommandHandler("trendAlert", trend_alert))
     updater.start_polling()
     while True:
         check_empty_stock()
