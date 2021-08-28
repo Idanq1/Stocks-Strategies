@@ -3,6 +3,8 @@ import time
 import datetime
 
 
+# https://tcoil.info/detect-double-bottom-in-stocks-with-python/
+
 def get_stock_info(stock, token="c43om8iad3if0j0su4og"):
     indicator = ["rsi", 14]
     end = int(time.time())
