@@ -5,7 +5,6 @@ import numpy as np
 import pandas as pd
 from math import sqrt
 import matplotlib.pyplot as plt
-import pandas_datareader as web
 from scipy.signal import savgol_filter
 from sklearn.linear_model import LinearRegression
 

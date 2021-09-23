@@ -6,6 +6,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.signal import savgol_filter
+from sklearn.linear_model import LinearRegression
+
 
 # https://tcoil.info/detect-double-bottom-in-stocks-with-python/
 # https://python.plainenglish.io/estimate-support-and-resistance-of-a-stock-with-python-beginner-algorithm-f1ae1508b66d
@@ -14,10 +16,12 @@ from scipy.signal import savgol_filter
 def get_stock_info(stock, token="c43om8iad3if0j0su4og"):
     # end = int(time.time())
     start_date = "8/7/2020"
-    end_date = "9/2/2021"
-
-    start = int(time.mktime(datetime.datetime.strptime(start_date, '%d/%m/%Y').timetuple()))
-    end = int(time.mktime(datetime.datetime.strptime(end_date, '%d/%m/%Y').timetuple()))
+    # end_date = "9/2/2021"
+    start_months = 6
+    start = int(time.time()) - (start_months * 30 * 24 * 60 * 60)
+    # start = int(time.mktime(datetime.datetime.strptime(start_date, '%d/%m/%Y').timetuple()))
+    # end = int(time.mktime(datetime.datetime.strptime(end_date, '%d/%m/%Y').timetuple()))
+    end = int(time.time())
     finnhub_client = finnhub.Client(api_key=token)
 
     return finnhub_client.stock_candles(symbol=stock, resolution='D', _from=start, to=end)
@@ -60,8 +64,16 @@ def local_min_max(pts):
     return local_min, local_max
 
 
+def regression_ceof(pts):
+    x = np.array([pt[0] for pt in pts]).reshape(-1, 1)
+    y = np.array([pt[1] for pt in pts])
+    model = LinearRegression()
+    model.fit(x, y)
+    return model.coef_[0], model.intercept_
+
+
 def main():
-    symbol = "COGT"
+    symbol = "AEHL"
     data = get_stock_info(symbol)
 
     # print(t)
@@ -74,30 +86,38 @@ def main():
     data["Time"] = data.pop("t")
     df = pd.DataFrame(data)
     print(df)
-    close = df["Close"]
+    close = df["Low"]
     days = close.shape[0]  # Number of days
     month_diff = days // 30
     if month_diff == 0:  # We want it bigger than 0
         month_diff = 1
     smooth = int(2 * month_diff + 3)  # Simple algo to determine smoothness  I have no idea how it works
     pts = savgol_filter(close, smooth, 3)
-    min_, max_ = local_min_max(pts)
+    local_min, local_max = local_min_max(pts)
     x_min = []
     x_max = []
     y_min = []
     y_max = []
-    for min_point in min_:
+    for min_point in local_min:
         x_min.append(min_point[0])
         y_min.append(min_point[1])
-    for max_point in max_:
+    for max_point in local_max:
         x_max.append(max_point[0])
         y_max.append(max_point[1])
+
+    local_min_slope, local_min_int = regression_ceof(local_min)
+    local_max_slope, local_max_int = regression_ceof(local_max)
+
+    support = (local_min_slope * np.array(close.index)) + local_min_int
+    resistance = (local_max_slope * np.array(close.index)) + local_max_int
 
     # plotting
     plt.title(symbol)
     plt.xlabel("Days")
     plt.ylabel("Prices")
     plt.plot(pts, label=f"Smooth {symbol}")
+    plt.plot(support, label="Support", c="r")
+    plt.plot(resistance, label="Resistance", c="g")
     plt.scatter(x_min, y_min)
     plt.scatter(x_max, y_max)
     plt.legend()
