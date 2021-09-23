@@ -21,11 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="da8f357f-bcc9-4762-9883-2da831bf612e" name="Default Changelist" comment="Morning star finished (I hope)&#10;&#10;Added Evening star, Volume threshold, SMA (14) for trend">
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Stocks-Strategies.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Stocks-Strategies.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Support and resistance/test1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Support and resistance/test1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Support and resistance/test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Support and resistance/test2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Support Line/support Test1.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,6 +222,7 @@
       <workItem from="1632336270246" duration="6062000" />
       <workItem from="1632413649382" duration="1414000" />
       <workItem from="1632415073967" duration="231000" />
+      <workItem from="1632417477327" duration="744000" />
     </task>
     <task id="LOCAL‎00001" summary="Morning star finished (I hope)&#10;&#10;Added Evening star, Volume threshold, SMA (14) for trend">
       <created>1602020690802</created>
