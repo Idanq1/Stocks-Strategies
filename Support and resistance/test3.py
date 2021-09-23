@@ -26,25 +26,12 @@ def get_stock_info(stock, token="c43om8iad3if0j0su4og"):
     finnub_data["Open"] = finnub_data.pop("o")
     finnub_data["Volume"] = finnub_data.pop("v")
     finnub_data["Time"] = finnub_data.pop("t")
-    df = pd.DataFrame(finnub_data)
-    series = df['Close']
-    series.index = np.arange(series.shape[0])
-
-
+    return pd.DataFrame(finnub_data)
 
 
 symbol = "AEHL"
-data = get_stock_info(symbol)
+df = get_stock_info(symbol)
 
-# print(t)
-del data["s"]
-data["Close"] = data.pop("c")
-data["High"] = data.pop("h")
-data["Low"] = data.pop("l")
-data["Open"] = data.pop("o")
-data["Volume"] = data.pop("v")
-data["Time"] = data.pop("t")
-df = pd.DataFrame(data)
 series = df['Close']
 series.index = np.arange(series.shape[0])
 
