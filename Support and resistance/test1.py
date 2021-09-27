@@ -47,6 +47,12 @@ def local_min_max(pts):
             if local_min or local_max:
                 prev_distance = pythag(prev_pts[0], prev_pts[1]) * 0.5
                 curr_distance = pythag(prev_pts[1], (i, pts[i]))
+                if append_to == "min":
+                    print(append_to)
+                    print(prev_distance)
+                    print(curr_distance)
+                    print(i)
+                    print("--------------")
                 if curr_distance >= prev_distance:
                     prev_pts[0] = prev_pts[1]
                     prev_pts[1] = (i, pts[i])
@@ -94,6 +100,8 @@ def main():
     smooth = int(2 * month_diff + 3)  # Simple algo to determine smoothness  I have no idea how it works
     pts = savgol_filter(close, smooth, 3)
     local_min, local_max = local_min_max(pts)
+    print(local_min)
+    print(local_max)
     x_min = []
     x_max = []
     y_min = []
