@@ -1,23 +1,13 @@
 import time
 import finnhub
-import datetime
 import numpy as np
 import pandas as pd
-from math import sqrt
 import matplotlib.pyplot as plt
 from scipy.signal import savgol_filter
-from sklearn.linear_model import LinearRegression
-import math
 
 
-def get_stock_info(stock, token="c43om8iad3if0j0su4og"):
-    # end = int(time.time())
-    start_date = "07/01/2021"
-    # end_date = "9/2/2021"
-    start_months = 9
+def get_stock_info(stock, start_months, token="c43om8iad3if0j0su4og"):
     start = int(time.time()) - (start_months * 30 * 24 * 60 * 60)
-    # start = int(time.mktime(datetime.datetime.strptime(start_date, '%d/%m/%Y').timetuple()))
-    # end = int(time.mktime(datetime.datetime.strptime(end_date, '%d/%m/%Y').timetuple()))
     end = int(time.time())
     finnhub_client = finnhub.Client(api_key=token)
     finnub_data = finnhub_client.stock_candles(symbol=stock, resolution='D', _from=start, to=end)
@@ -31,18 +21,15 @@ def get_stock_info(stock, token="c43om8iad3if0j0su4og"):
     return pd.DataFrame(finnub_data)
 
 
-def local_min_max(pts):
+def local_min_max(pts, days_threshold):
     local_min = []
     local_max = []
-    # prev_pts = [(0, pts[0]), (1, pts[1]), (2, pts[2])]
-    # days_threshold = 3
-    prev_pts = []
-    next_pts = []
-    for i in range(2, len(pts) - 2):
-        # for j in range(1, days_threshold + 1):  # Later for days threshold
-        #     prev_pts.append(pts[i-j])  # Later for days threshold
-        prev_pts = [pts[i-2], pts[i-1]]
-        next_pts = [pts[i+1], pts[i+2]]
+    for i in range(days_threshold, len(pts) - days_threshold):
+        prev_pts = []
+        next_pts = []
+        for j in range(1, days_threshold + 1):
+            prev_pts.append(pts[i-j])
+            next_pts.append(pts[i+j])
         max_prev = max(prev_pts)
         min_prev = min(prev_pts)
         max_next = max(next_pts)
@@ -80,14 +67,6 @@ def abs_min_max(local_min, local_max):
     return abs_min, abs_max
 
 
-# def numpy_to_list(local_pts):
-#     pts = []
-#     for pt in local_pts:
-#         pts.append(pt[1])
-#     return [x[1] for x in pts]
-#     return pts
-
-
 def threshold_averaged(local_min, local_max, abs_min, abs_max, threshold=2):
     numpy_to_list = lambda pts: [x[1] for x in pts]
     local_min_value = numpy_to_list(local_min)
@@ -116,11 +95,10 @@ def avg_pts(local_min, local_max):
     return support, resistance
 
 
-def main():
-    symbol = "NVGS"
-    df = get_stock_info(symbol)
+def main(symbol, start_month, find_by, threshold_pts):
+    df = get_stock_info(symbol, start_month)
 
-    series = df['Close']
+    series = df[find_by]
     series.index = np.arange(series.shape[0])
 
     month_diff = series.shape[0] // 30
@@ -128,9 +106,9 @@ def main():
         month_diff = 1
 
     smooth = int(2 * month_diff + 3)
-    lines_threshold = 30
+    lines_threshold = 100
     pts = savgol_filter(series, smooth, 3)
-    local_min, local_max = local_min_max(pts)
+    local_min, local_max = local_min_max(pts, threshold_pts)
     abs_min, abs_max = abs_min_max(local_min, local_max)
     th_support, th_resistance = threshold_averaged(local_min, local_max, abs_min, abs_max, lines_threshold)
     support, resistance = avg_pts(local_min, local_max)
@@ -145,14 +123,12 @@ def main():
     for max_point in local_max:
         x_max.append(max_point[0])
         y_max.append(max_point[1])
-    # print(support)
-    # print(resistance)
     plt.title(symbol)
     plt.xlabel('Days')
     plt.ylabel('Prices')
     plt.plot(series, label=symbol)
-    plt.scatter(x_min, y_min, c='g', label="min")
-    plt.scatter(x_max, y_max, c='r', label="max")
+    plt.scatter(x_min, y_min, c='g')
+    plt.scatter(x_max, y_max, c='r')
     plt.axhline(th_support, c="g", label="Threshold Support")
     plt.axhline(th_resistance, c="r", label="Threshold Resistance")
     plt.axhline(support, c="m", label="Support")
@@ -160,21 +136,11 @@ def main():
     plt.plot(pts, label="Smooth")
     plt.legend()
     plt.show()
-    # local_min, local_max = local_min_max(pts)
-
-    # support = (local_min_slope * np.array(series.index)) + local_min_int
-    # resistance = (local_max_slope * np.array(series.index)) + local_max_int
-
-    # plt.title(symbol)
-    # plt.xlabel('Days')
-    # plt.ylabel('Prices')
-    # plt.plot(series, label=symbol)
-    # plt.plot(pts, label="Smooth")
-    # plt.plot(support, label='Support', c='r')
-    # plt.plot(resistance, label='Resistance', c='g')
-    # plt.legend()
-    # plt.show()
 
 
 if __name__ == '__main__':
-    main()
+    sym = "AEHL"
+    months_back = 9
+    fnd_by = "Close"
+    threshold_days = 5  # How many days can count as a minima/maxima noise and ignore it
+    main(sym, months_back, fnd_by, threshold_days)
