@@ -7,13 +7,14 @@ from math import sqrt
 import matplotlib.pyplot as plt
 from scipy.signal import savgol_filter
 from sklearn.linear_model import LinearRegression
+import math
 
 
 def get_stock_info(stock, token="c43om8iad3if0j0su4og"):
     # end = int(time.time())
     start_date = "07/01/2021"
     # end_date = "9/2/2021"
-    start_months = 4
+    start_months = 9
     start = int(time.time()) - (start_months * 30 * 24 * 60 * 60)
     # start = int(time.mktime(datetime.datetime.strptime(start_date, '%d/%m/%Y').timetuple()))
     # end = int(time.mktime(datetime.datetime.strptime(end_date, '%d/%m/%Y').timetuple()))
@@ -79,24 +80,44 @@ def abs_min_max(local_min, local_max):
     return abs_min, abs_max
 
 
-# def noised_resistance(abs_max_pt, local_max):
+# def numpy_to_list(local_pts):
+#     pts = []
+#     for pt in local_pts:
+#         pts.append(pt[1])
+#     return [x[1] for x in pts]
+#     return pts
+
+
+def threshold_averaged(local_min, local_max, abs_min, abs_max, threshold=2):
+    numpy_to_list = lambda pts: [x[1] for x in pts]
+    local_min_value = numpy_to_list(local_min)
+    local_max_value = numpy_to_list(local_max)
+
+    # Min
+    tmp_min_pts = [pt ** (1/threshold) for pt in local_min_value]
+    tmp_min_avg = sum(tmp_min_pts) / len(tmp_min_pts)
+    support = tmp_min_avg ** threshold
+
+    # Max
+    tmp_max_pts = [pt ** threshold for pt in local_max_value]
+    tmp_max_avg = sum(tmp_max_pts) / len(tmp_max_pts)
+    resistance = tmp_max_avg ** (1 / threshold)
+    return support, resistance
+
+
 def avg_pts(local_min, local_max):
     # Min
-    support = []
-    for pt in local_min:
-        support.append(pt[1])
+    support = [pt[1] for pt in local_min]
     support = sum(support) / len(support)
 
     # Max
-    resistance = []
-    for pt in local_max:
-        resistance.append(pt[1])
+    resistance = [pt[1] for pt in local_max]
     resistance = sum(resistance) / len(resistance)
     return support, resistance
 
 
 def main():
-    symbol = "AEHL"
+    symbol = "NVGS"
     df = get_stock_info(symbol)
 
     series = df['Close']
@@ -107,13 +128,12 @@ def main():
         month_diff = 1
 
     smooth = int(2 * month_diff + 3)
-
+    lines_threshold = 30
     pts = savgol_filter(series, smooth, 3)
     local_min, local_max = local_min_max(pts)
+    abs_min, abs_max = abs_min_max(local_min, local_max)
+    th_support, th_resistance = threshold_averaged(local_min, local_max, abs_min, abs_max, lines_threshold)
     support, resistance = avg_pts(local_min, local_max)
-    # print(local_min)
-    # print(local_max)
-    # print(abs_min_max(local_min, local_max))
 
     x_min = []
     x_max = []
@@ -125,16 +145,18 @@ def main():
     for max_point in local_max:
         x_max.append(max_point[0])
         y_max.append(max_point[1])
-    print(support)
-    print(resistance)
+    # print(support)
+    # print(resistance)
     plt.title(symbol)
     plt.xlabel('Days')
     plt.ylabel('Prices')
     plt.plot(series, label=symbol)
     plt.scatter(x_min, y_min, c='g', label="min")
     plt.scatter(x_max, y_max, c='r', label="max")
-    plt.axhline(support, c="g", label="Support")
-    plt.axhline(resistance, c="r", label="Resistance")
+    plt.axhline(th_support, c="g", label="Threshold Support")
+    plt.axhline(th_resistance, c="r", label="Threshold Resistance")
+    plt.axhline(support, c="m", label="Support")
+    plt.axhline(resistance, c="y", label="Resistance")
     plt.plot(pts, label="Smooth")
     plt.legend()
     plt.show()
