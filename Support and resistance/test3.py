@@ -35,14 +35,14 @@ def local_min_max(pts, days_threshold):
         max_next = max(next_pts)
         min_next = min(next_pts)
         pt = pts[i]
-        if min_prev > pt < min_next:
-            local_min.append((i, pts[i]))
-        elif max_prev < pt > max_next:
-            local_max.append((i, pts[i]))
+        if min_prev >= pt <= min_next:
+            local_min.append((i, pt))
+        elif max_prev <= pt >= max_next:
+            local_max.append((i, pt))
     return local_min, local_max
 
 
-def abs_min_max(local_min, local_max):
+def abs_min_max(local_min, local_max):  # Absolute min/max
     # Max
     max_rd = 0  # Remember day
     max_v = local_max[0][1]
@@ -107,7 +107,7 @@ def main(symbol, start_month, find_by, threshold_pts):
 
     smooth = int(2 * month_diff + 3)
     lines_threshold = 100
-    pts = savgol_filter(series, smooth, 3)
+    pts = savgol_filter(series, smooth, 2)
     local_min, local_max = local_min_max(pts, threshold_pts)
     abs_min, abs_max = abs_min_max(local_min, local_max)
     th_support, th_resistance = threshold_averaged(local_min, local_max, abs_min, abs_max, lines_threshold)
@@ -123,6 +123,7 @@ def main(symbol, start_month, find_by, threshold_pts):
     for max_point in local_max:
         x_max.append(max_point[0])
         y_max.append(max_point[1])
+
     plt.title(symbol)
     plt.xlabel('Days')
     plt.ylabel('Prices')
@@ -139,8 +140,8 @@ def main(symbol, start_month, find_by, threshold_pts):
 
 
 if __name__ == '__main__':
-    sym = "AEHL"
-    months_back = 9
+    sym = "YVR"
+    months_back = 3
     fnd_by = "Close"
-    threshold_days = 5  # How many days can count as a minima/maxima noise and ignore it
+    threshold_days = 2  # How many days can count as a minima/maxima noise and ignore it
     main(sym, months_back, fnd_by, threshold_days)
