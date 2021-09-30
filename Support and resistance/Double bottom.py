@@ -22,8 +22,8 @@ def get_stock_info(stock, start_months):
             change_token()
             get_stock_info(stock, start_months)
         else:
-            print(e)
-            print(exception_status)
+            # print(e)
+            # print(exception_status)
             return False
     if finnub_data["s"] == "no_data":
         return False
@@ -95,18 +95,37 @@ def avg_pts(local_min, local_max):
     return avg_min, avg_max
 
 
-def is_double_bottom(local_min, current_price, prcnt_between_points):
+def is_double_bottom(local_min, current_price, prcnt_between_points, dis_btwn_pts):
     # Calculate % between local mins
-    pts = [pt[1] for pt in local_min]
-    for i in range(1, len(pts)):
-        pt = pts[i]
-        prev_pt = pts[i-1]
-        prc_pts = calc_prcnt(pt, prev_pt)
-        prc_price = calc_prcnt(pt, current_price)  # Distance current price from double bottom line
-        if abs(prc_pts) <= prcnt_between_points:
-            if abs(prc_price) <= 4:
-                return True
+    # pts = [pt[1] for pt in local_min]
+    for pt1 in local_min:
+        day1 = pt1[0]
+        price1 = pt1[1]
+        prc_price = abs(calc_prcnt(price1, current_price))
+        if prc_price >= 4:  # Double bottom line less than 4% from the current price
+            continue
+        for pt2 in local_min:
+            day2 = pt2[0]
+            price2 = pt2[1]
+
+            if day1 == day2:
+                continue
+            if abs(day1-day2) <= dis_btwn_pts:
+                continue
+            prc_pts = calc_prcnt(price1, price2)
+            if abs(prc_pts) >= prcnt_between_points:
+                continue
+            return (pt1, pt2), (price1+price2)/2  # pts, double bottom line
     return False
+    # for i in range(1, len(pts)):
+    #     pt = pts[i]
+    #     prev_pt = pts[i-1]
+    #     prc_pts = calc_prcnt(pt, prev_pt)
+    #     prc_price = calc_prcnt(pt, current_price)  # Distance current price from double bottom line
+    #     if abs(prc_pts) <= prcnt_between_points:
+    #         if abs(prc_price) <= 4:  # Double bottom line less than 4% from the current price
+    #             return True
+    # return False
 
 
 def abs_min(local_min):  # Absolute min
@@ -126,7 +145,7 @@ def calc_prcnt(var1, var2):
     return ((var1/var2)*100)-100
 
 
-def main(symbol, start_month, find_by, threshold_pts, prcnt_between_points, volume_threshold):
+def main(symbol, start_month, find_by, threshold_pts, prcnt_between_points, volume_threshold, dis_btwn_pts, dis_db_bottom):
     df = get_stock_info(symbol, start_month)
     if df is False:
         return
@@ -138,6 +157,8 @@ def main(symbol, start_month, find_by, threshold_pts, prcnt_between_points, volu
     series = df[find_by]
     series.index = np.arange(series.shape[0])
 
+    atl = min(series.values)
+
     # Smooth
     month_diff = series.shape[0] // 30
     if month_diff == 0:
@@ -146,16 +167,24 @@ def main(symbol, start_month, find_by, threshold_pts, prcnt_between_points, volu
     try:
         pts = savgol_filter(series, smooth, 3)
     except ValueError:
-        print(f"CRASHED: {symbol}")
+        # print(f"CRASHED: {symbol}")
         return
 
     current_price = pts[-1]
     local_min, local_max = local_min_max(pts, threshold_pts)
+
     if len(local_min) == 0 or len(local_max) == 0:
         return
-    db = is_double_bottom(local_min, current_price, prcnt_between_points)
-    if not db:
+    db = is_double_bottom(local_min, current_price, prcnt_between_points, dis_btwn_pts)
+    if not db:  # Didn't find DB
         return
+    db_line = db[1]
+    pt1 = db[0][0]
+    pt2 = db[0][1]
+    print(pt1)
+    if abs(calc_prcnt(db_line, atl)) >= dis_db_bottom:  # Distance double bottom line from all time low
+        return
+
     abs_min_py = abs_min(local_min)
     support, resistance = avg_pts(local_min, local_max)
 
@@ -163,52 +192,51 @@ def main(symbol, start_month, find_by, threshold_pts, prcnt_between_points, volu
         return
 
     dif_lines = calc_prcnt(support, resistance)
-
-    if abs(dif_lines) <= 10:  # Difference between support and resistance
-        # print(f"{symbol} sucks")
+    if abs(dif_lines) <= 10:  # Percent difference between support and resistance
         return
+
     print(symbol)
-    #
-    # x_min = []
-    # x_max = []
-    # y_min = []
-    # y_max = []
-    # for min_point in local_min:
-    #     x_min.append(min_point[0])
-    #     y_min.append(min_point[1])
-    # for max_point in local_max:
-    #     x_max.append(max_point[0])
-    #     y_max.append(max_point[1])
-    # plt.title(symbol)
-    # plt.xlabel('Days')
-    # plt.ylabel('Prices')
-    # plt.plot(series, label=symbol)
+
+    x_min = []
+    x_max = []
+    y_min = []
+    y_max = []
+    for min_point in local_min:
+        x_min.append(min_point[0])
+        y_min.append(min_point[1])
+    for max_point in local_max:
+        x_max.append(max_point[0])
+        y_max.append(max_point[1])
+    plt.title(symbol)
+    plt.xlabel('Days')
+    plt.ylabel('Prices')
+    plt.plot(series, label=symbol)
     # plt.scatter(x_min, y_min, c='g')
     # plt.scatter(x_max, y_max, c='r')
-    # plt.plot(pts, label="Smooth")
-    # plt.legend()
-    # plt.show()
+    plt.scatter(pt1[0], pt1[1], c="m")
+    plt.scatter(pt2[0], pt2[1], c="m")
+    plt.axhline(db_line, c="r", label="Double bottom line")
+    plt.plot(pts, label="Smooth")
+    plt.legend()
+    plt.show()
 
 
 if __name__ == '__main__':
     tokens = ["c43om8iad3if0j0su4og", "c43baq2ad3iaavqonarg", "c437gqqad3iaavqojj0g", "c43f8kiad3if0j0skdvg", "c43opbaad3if0j0su7bg", "c43oqsaad3if0j0su8b0", "c43ordiad3if0j0su8sg", "c43oseqad3if0j0su9e0", "c43ossiad3if0j0su9pg", "c43otbqad3if0j0sua3g"]
     current_token = tokens[0]
-    # sym = "CLVS"
-    months_back = 3
-    volume_thrs = 10000
-    fnd_by = "Low"
-    percent_pts_threshold = 2
+
+    months_back = 5
+    volume_thrs = 10000  # Minimum average volume in the given time
+    fnd_by = "Low"  # Open, Low, Close, High
+    percent_pts_threshold = 2  # Percents between minima points to qualify as double bottom
     threshold_days = 5  # How many days can count as a minima/maxima noise and ignore it
-    # stocks = ["AMD", "BLNK", "CINR", "CLVS", "COGT", "DSKE", "EBR", "FL", "GMBL", "LI", "PPBT", "SILC", "SNES", "TDAC", "TSLA", "APEI", "BIG", "BNGO", "BTCUSD", "BYND", "CAR", "DISCA", "DXF", "F", "ISCN", "LEGN", "REED", "RGLS", "SQ", "INPX", "POLA", "NAKD", "TLGT", "AUMN", "BHAT", "SONM"]
-    stocks = get_tickers()
-    # passed = "TSLA"
+    dis_between_min_pts = 10  # Distance in days between local minima points
+    db_dis_bottom = 30  # Double bottom line distance from the all-time-low
+
+    # stocks = get_tickers()
     s = time.time()
+    stocks = ["AEHL"]
     for stock in stocks:
-        # if passed:
-        #     if stock == passed:
-        #         passed = False
-        #     continue
-        main(stock, months_back, fnd_by, threshold_days, percent_pts_threshold, volume_thrs)
+        main(stock, months_back, fnd_by, threshold_days, percent_pts_threshold, volume_thrs, dis_between_min_pts, db_dis_bottom)
     print(time.time() - s)
-    # main(sym, months_back, fnd_by, threshold_days, percent_pts_threshold)
 
