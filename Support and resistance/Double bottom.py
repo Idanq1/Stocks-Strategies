@@ -179,9 +179,9 @@ def main(symbol, start_month, find_by, threshold_pts, prcnt_between_points, volu
     if not db:  # Didn't find DB
         return
     db_line = db[1]
-    pt1 = db[0][0]
-    pt2 = db[0][1]
-    print(pt1)
+    # pt1 = db[0][0]
+    # pt2 = db[0][1]
+    # print(pt1)
     if abs(calc_prcnt(db_line, atl)) >= dis_db_bottom:  # Distance double bottom line from all time low
         return
 
@@ -195,30 +195,30 @@ def main(symbol, start_month, find_by, threshold_pts, prcnt_between_points, volu
     if abs(dif_lines) <= 10:  # Percent difference between support and resistance
         return
 
-    print(symbol)
-
-    x_min = []
-    x_max = []
-    y_min = []
-    y_max = []
-    for min_point in local_min:
-        x_min.append(min_point[0])
-        y_min.append(min_point[1])
-    for max_point in local_max:
-        x_max.append(max_point[0])
-        y_max.append(max_point[1])
-    plt.title(symbol)
-    plt.xlabel('Days')
-    plt.ylabel('Prices')
-    plt.plot(series, label=symbol)
-    # plt.scatter(x_min, y_min, c='g')
-    # plt.scatter(x_max, y_max, c='r')
-    plt.scatter(pt1[0], pt1[1], c="m")
-    plt.scatter(pt2[0], pt2[1], c="m")
-    plt.axhline(db_line, c="r", label="Double bottom line")
-    plt.plot(pts, label="Smooth")
-    plt.legend()
-    plt.show()
+    print(symbol, round(support, 2))
+    #
+    # x_min = []
+    # x_max = []
+    # y_min = []
+    # y_max = []
+    # for min_point in local_min:
+    #     x_min.append(min_point[0])
+    #     y_min.append(min_point[1])
+    # for max_point in local_max:
+    #     x_max.append(max_point[0])
+    #     y_max.append(max_point[1])
+    # plt.title(symbol)
+    # plt.xlabel('Days')
+    # plt.ylabel('Prices')
+    # plt.plot(series, label=symbol)
+    # # plt.scatter(x_min, y_min, c='g')
+    # # plt.scatter(x_max, y_max, c='r')
+    # plt.scatter(pt1[0], pt1[1], c="m")
+    # plt.scatter(pt2[0], pt2[1], c="m")
+    # plt.axhline(db_line, c="r", label="Double bottom line")
+    # plt.plot(pts, label="Smooth")
+    # plt.legend()
+    # plt.show()
 
 
 if __name__ == '__main__':
@@ -233,9 +233,8 @@ if __name__ == '__main__':
     dis_between_min_pts = 10  # Distance in days between local minima points
     db_dis_bottom = 30  # Double bottom line distance from the all-time-low
 
-    # stocks = get_tickers()
+    stocks = get_tickers()
     s = time.time()
-    stocks = ["AEHL"]
     for stock in stocks:
         main(stock, months_back, fnd_by, threshold_days, percent_pts_threshold, volume_thrs, dis_between_min_pts, db_dis_bottom)
     print(time.time() - s)
