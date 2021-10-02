@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da8f357f-bcc9-4762-9883-2da831bf612e" name="Default Changelist" comment="Morning star finished (I hope)&#10;&#10;Added Evening star, Volume threshold, SMA (14) for trend">
-      <change beforePath="$PROJECT_DIR$/Support and resistance/Double bottom.py" beforeDir="false" afterPath="$PROJECT_DIR$/Support and resistance/Double bottom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +47,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="JupyterTrust" id="b186d581-bc7f-4b8a-a5f5-c1fe6eb49ee6" />
   <component name="ProjectId" id="1iSpdadjH07SntXA37QtawKfw50" />
@@ -256,31 +264,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Morning star finished (I hope)&#10;&#10;Added Evening star, Volume threshold, SMA (14) for trend" />
     <option name="LAST_COMMIT_MESSAGE" value="Morning star finished (I hope)&#10;&#10;Added Evening star, Volume threshold, SMA (14) for trend" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1632413842609">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1632413842609" />
-    <state width="1877" height="172" key="GridCell.Tab.0.bottom" timestamp="1632848344885">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="172" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1632848344885" />
-    <state width="1877" height="172" key="GridCell.Tab.0.center" timestamp="1632848344885">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="172" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1632848344885" />
-    <state width="1877" height="172" key="GridCell.Tab.0.left" timestamp="1632848344885">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="172" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1632848344885" />
-    <state width="1877" height="172" key="GridCell.Tab.0.right" timestamp="1632848344885">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="172" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1632848344885" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1632771820952">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1632771820952" />
   </component>
 </project>
