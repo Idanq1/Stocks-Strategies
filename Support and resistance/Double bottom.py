@@ -1,5 +1,7 @@
+import os
 import time
 import finnhub
+import datetime
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -179,8 +181,8 @@ def main(symbol, start_month, find_by, threshold_pts, prcnt_between_points, volu
     if not db:  # Didn't find DB
         return
     db_line = db[1]
-    # pt1 = db[0][0]
-    # pt2 = db[0][1]
+    pt1 = db[0][0]
+    pt2 = db[0][1]
     # print(pt1)
     if abs(calc_prcnt(db_line, atl)) >= dis_db_bottom:  # Distance double bottom line from all time low
         return
@@ -196,32 +198,38 @@ def main(symbol, start_month, find_by, threshold_pts, prcnt_between_points, volu
         return
 
     print(symbol, round(support, 2))
-    #
-    # x_min = []
-    # x_max = []
-    # y_min = []
-    # y_max = []
-    # for min_point in local_min:
-    #     x_min.append(min_point[0])
-    #     y_min.append(min_point[1])
-    # for max_point in local_max:
-    #     x_max.append(max_point[0])
-    #     y_max.append(max_point[1])
-    # plt.title(symbol)
-    # plt.xlabel('Days')
-    # plt.ylabel('Prices')
-    # plt.plot(series, label=symbol)
-    # # plt.scatter(x_min, y_min, c='g')
-    # # plt.scatter(x_max, y_max, c='r')
-    # plt.scatter(pt1[0], pt1[1], c="m")
-    # plt.scatter(pt2[0], pt2[1], c="m")
-    # plt.axhline(db_line, c="r", label="Double bottom line")
-    # plt.plot(pts, label="Smooth")
-    # plt.legend()
-    # plt.show()
+
+    x_min = []
+    x_max = []
+    y_min = []
+    y_max = []
+    for min_point in local_min:
+        x_min.append(min_point[0])
+        y_min.append(min_point[1])
+    for max_point in local_max:
+        x_max.append(max_point[0])
+        y_max.append(max_point[1])
+    plt.title(symbol)
+    plt.xlabel('Days')
+    plt.ylabel('Prices')
+    plt.plot(series, label=symbol)
+    # plt.scatter(x_min, y_min, c='g')
+    # plt.scatter(x_max, y_max, c='r')
+    plt.scatter(pt2[0], pt2[1], c="m")
+    plt.scatter(pt1[0], pt1[1], c="m")
+    plt.axhline(db_line, c="r", label="Double bottom line")
+    plt.plot(pts, label="Smooth")
+    plt.legend()
+
+    date = datetime.datetime.now().strftime("%Y_%m_%d")
+    if date not in os.listdir("Results"):
+        os.mkdir(f"Results\\{date}")
+    plt.savefig(f"Results\\{date}\\{symbol}.jpg", dpi=1200)
+    plt.clf()
 
 
 if __name__ == '__main__':
+    # date = datetime.datetime.now().strftime("%Y_%m_%d")
     tokens = ["c43om8iad3if0j0su4og", "c43baq2ad3iaavqonarg", "c437gqqad3iaavqojj0g", "c43f8kiad3if0j0skdvg", "c43opbaad3if0j0su7bg", "c43oqsaad3if0j0su8b0", "c43ordiad3if0j0su8sg", "c43oseqad3if0j0su9e0", "c43ossiad3if0j0su9pg", "c43otbqad3if0j0sua3g"]
     current_token = tokens[0]
 
@@ -232,7 +240,6 @@ if __name__ == '__main__':
     threshold_days = 5  # How many days can count as a minima/maxima noise and ignore it
     dis_between_min_pts = 10  # Distance in days between local minima points
     db_dis_bottom = 30  # Double bottom line distance from the all-time-low
-
     stocks = get_tickers()
     s = time.time()
     for stock in stocks:
