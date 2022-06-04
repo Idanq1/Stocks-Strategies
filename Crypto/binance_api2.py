@@ -25,29 +25,26 @@ def get_historical_data(token, interval, start, end=None):
     return candles
 
 
-def alert():
-    for i in range(10):
-        winsound.Beep(2000, 80)
-
-
 def main():
     tokens = get_all_tokens()
     for token in tokens:
         candles = get_historical_data(token, "1m", "12 minutes ago UTC")
         change_sum = []
         for candle in candles:
-            if candle == candles[-2]:  # Doesn't take from the lasts (I think)
+            if candle == candles[-2]:
                 if sum(change_sum) == 0:
                     break
                 change_sum = [c for c in change_sum if c > 0]  # Delete all 0 numbers
                 avg_change = sum(change_sum)/len(change_sum)
 
-                if abs(candle.change()) > (avg_change * 10) and candle.volume > 50000:  # Sudden spike
+                # if abs(candle.change()) > (avg_change * 10) and candle.volume > 50000:
+                if abs(candle.change()) > 3:
                     print(candle.ticker)
                     print("last candle change:", candle.change())
                     print(avg_change * 10)
                     print("-------")
-                    alert()
+                    for i in range(10):
+                        winsound.Beep(2000, 80)
                 break
             else:
                 change_sum.append(abs(candle.change()))
@@ -57,4 +54,4 @@ if __name__ == '__main__':
     while True:
         # s = time.time()
         main()
-        # print(s-time.time())
+        # print(time.time() - s)
