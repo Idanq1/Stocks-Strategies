@@ -222,6 +222,8 @@ def main(symbol, start_month, find_by, threshold_pts, prcnt_between_points, volu
     plt.legend()
 
     date = datetime.datetime.now().strftime("%Y_%m_%d")
+    if "Results" not in os.listdir():
+        os.mkdir("Results")
     if date not in os.listdir("Results"):
         os.mkdir(f"Results\\{date}")
     plt.savefig(f"Results\\{date}\\{symbol}.jpg", dpi=1200)

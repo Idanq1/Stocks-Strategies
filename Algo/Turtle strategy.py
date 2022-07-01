@@ -1,7 +1,6 @@
 from pandas_datareader import data
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
 
 
 def load_stock_data(stock, start_date, end_date, output_file):
@@ -27,7 +26,6 @@ def turtle(stock_data, window_size):
 
     signals['long_exit'] = stock_data['Adj Close'] < signals.avg
     signals['short_exit'] = stock_data['Adj Close'] > signals.avg
-    init = True
     position = 0
     for i in range(len(signals)):
         if signals['long_entry'][i] and position == 0:
@@ -134,9 +132,9 @@ def plot_fig_returns(ts, stock_data):
     # ts["low"].plot(ax=ax1, color='r', lw=.5)
     # ts["avg"].plot(ax=ax1, color='y', lw=.5)
     ax1.plot(ts.loc[ts.orders == 1.0].index, stock_data["prcnt"][ts.orders == 1], '^', markersize=7, color='k')
-    ax1.plot(ts.loc[ts.orders == -1].index, stock_data["prcnt"][ts.orders == -1], 'v', markersize=7, color='k')
+    ax1.plot(ts.loc[ts.orders == -1].index, stock_data["prcnt"][ts.orders == -1], 'v', markersize=7, color='r')
     ax1.plot(ts.loc[ts.orders == 1.0].index, stock_data["sim_prcnt"][ts.orders == 1], '^', markersize=7, color='k')
-    ax1.plot(ts.loc[ts.orders == -1].index, stock_data["sim_prcnt"][ts.orders == -1], 'v', markersize=7, color='k')
+    ax1.plot(ts.loc[ts.orders == -1].index, stock_data["sim_prcnt"][ts.orders == -1], 'v', markersize=7, color='r')
     plt.legend(["Google returns", "My returns", "Buy", "Sell"])
     plt.title("Turtle Trading Strategy")
     plt.show()

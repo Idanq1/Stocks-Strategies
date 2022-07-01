@@ -1,7 +1,8 @@
-from binance import Client
-import time
 from CandleClass import Candle
+from binance import Client
+import threading
 import winsound
+import time
 
 api_key = "8AiGAyxlhYQaRpE1s7097hx5sZ12Ogtr8ir9DsyztaD5j24LrI0fEoToDzCI5lle"
 api_secret = "VhudTs0HsBVFNdSTghmqfCjUuIXF6rFiXIfROxHIaM71TGgib7NeZ5aOsJUHjI9f"
@@ -25,33 +26,45 @@ def get_historical_data(token, interval, start, end=None):
     return candles
 
 
-def main():
-    tokens = get_all_tokens()
-    for token in tokens:
-        candles = get_historical_data(token, "1m", "12 minutes ago UTC")
-        change_sum = []
-        for candle in candles:
-            if candle == candles[-2]:
-                if sum(change_sum) == 0:
-                    break
-                change_sum = [c for c in change_sum if c > 0]  # Delete all 0 numbers
-                avg_change = sum(change_sum)/len(change_sum)
+def alert():
+    for i in range(10):
+        winsound.Beep(2000, 80)
 
-                # if abs(candle.change()) > (avg_change * 10) and candle.volume > 50000:
-                if abs(candle.change()) > 3:
-                    print(candle.ticker)
-                    print("last candle change:", candle.change())
-                    print(avg_change * 10)
-                    print("-------")
-                    for i in range(10):
-                        winsound.Beep(2000, 80)
+
+def main(token):
+    candles = get_historical_data(token, "1m", "15 minutes ago UTC")
+    change_sum = []
+    for candle in candles:
+        if candle == candles[-2]:  # Doesn't take from the lasts (I think)
+            if sum(change_sum) == 0:
                 break
-            else:
-                change_sum.append(abs(candle.change()))
+            change_sum = [c for c in change_sum if c > 0]  # Delete all 0 numbers
+            print(candle.open)
+            if candle.open > 100:
+                print(token)
+            # avg_change = sum(change_sum)/len(change_sum)
+        #
+        #     if abs(candle.change()) > (avg_change * 10) and candle.volume > 50000:  # Sudden spike
+        #         print(candle.ticker)
+        #         print("last candle change:", candle.change())
+        #         print(avg_change * 10)
+        #         print("-------")
+        #         alert()
+        #     break
+        # else:
+        #     change_sum.append(abs(candle.change()))
 
 
 if __name__ == '__main__':
+    tokens_list = get_all_tokens()
+    # tokens_list = tokens_list[:3]
+    # print(tokens_list)
+    # time.sleep(42)
     while True:
-        # s = time.time()
-        main()
-        # print(time.time() - s)
+        s = time.time()
+        for coin in tokens_list:
+            main1 = threading.Thread(target=main, args=[coin])
+            main1.start()
+        print("finished_loop")
+        time.sleep(60)
+        print(s-time.time())
