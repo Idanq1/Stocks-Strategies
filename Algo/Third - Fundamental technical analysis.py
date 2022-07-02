@@ -26,7 +26,7 @@ for close_price in close:
     if len(history) > time_period:  # we remove oldest price because we only average over last 'time_period' prices
         del (history[0])
     sma_values.append(stats.mean(history))
-goog_dataq = goog_data.assign(ClosePrice=pd.Series(close, index=goog_data.index))
+goog_data = goog_data.assign(ClosePrice=pd.Series(close, index=goog_data.index))
 goog_data = goog_data.assign(Simple20DayMovingAverage=pd.Series(sma_values, index=goog_data.index))
 close_price = goog_data['ClosePrice']
 sma = goog_data['Simple20DayMovingAverage']
