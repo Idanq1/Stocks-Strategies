@@ -1,8 +1,8 @@
 import asyncio
 import websockets
 import requests
-import time
 import json
+
 
 def get_tickers():
     symbols = []
