@@ -1,14 +1,15 @@
-import asyncio
 import websockets
+import datetime
 import requests
+import asyncio
 import time
 import json
 
-
-# TODO: Add relative volume
-# TODO: Do not print the same coin twice on the same kline (Can use time)
+# TODO: Add relative volume - request 5m klines as well
+# TODO: Do not print the same coin twice on the same kline (Can use time)  -  V
 # TODO: Alert noise
 # TODO: Also print time
+
 
 def get_tickers():
     symbols = []
@@ -36,6 +37,7 @@ def sorter(open_, high, low, close, volume):
 
 
 async def candle_stick_data():
+    data = {}
     url = "wss://stream.binance.com:9443/ws/"  # steam address
     symbols = get_tickers()
     symbols.remove("BTCUSDT")  # Cause I have no idea what to put on first pair
@@ -48,7 +50,6 @@ async def candle_stick_data():
 
         pairs = []
         while symbols:
-
             sym_list = symbols[:100]  # Make pairs with only 100 coins (to prevent payload too long)
             symbols = symbols[100:]
 
@@ -66,12 +67,11 @@ async def candle_stick_data():
             if "result" in resp:
                 if resp["result"] is None:
                     continue
-            new_time = True
 
             symbol = resp["s"]
             e_time = int(resp["E"])
-            # kline_s = resp["k"]["t"]
-            # kline_c = resp["k"]["T"]
+            kline_s = resp["k"]["t"]
+            kline_c = resp["k"]["T"]
             interval = resp["k"]["i"]
             open_ = float(resp["k"]["o"])
             high = float(resp["k"]["h"])
@@ -80,16 +80,43 @@ async def candle_stick_data():
             volume = float(resp["k"]["v"])
             is_closed = bool(resp["k"]["x"])
 
-            if is_closed:
-                new_time = True
+            if symbol not in data:
+                data[symbol] = {str(kline_s): {"open": open_, "high": high, "close": close, low: "low", "volume": volume, "is_closed": is_closed, "printed": False}}
+            else:
+                if str(kline_s) not in data[symbol]:
+                    data[symbol][str(kline_s)] = {"open": open_, "high": high, "close": close, low: "low", "volume": volume, "is_closed": is_closed, "printed": False}
+                else:
+                    data[symbol][str(kline_s)]["open"] = open_
+                    data[symbol][str(kline_s)]["high"] = high
+                    data[symbol][str(kline_s)]["close"] = close
+                    data[symbol][str(kline_s)]["low"] = low
+                    data[symbol][str(kline_s)]["volume"] = volume
+                    data[symbol][str(kline_s)]["is_closed"] = is_closed
 
+            if len(data[symbol]) >= 3:
+                rel_v = []
+                for i in data[symbol]:
+                    rel_v.append(data[symbol][i]["volume"])
+                rel_v = sum(rel_v)/len(rel_v)
+                print(symbol)
+                print(rel_v)
+
+            did_print = data[symbol][str(kline_s)]["printed"]
+            if did_print:
+                continue
             to_print = sorter(open_, high, low, close, volume)
             if to_print:
-                print(symbol)
-                print(open_)
-                print(close)
-                print(is_closed)
-                print(volume)
+                current_time = datetime.datetime.now().strftime("%H:%M:%S")
+                data[symbol][str(kline_s)]["printed"] = True  # So it doesn't print twice
+                print(f"--{symbol}---{current_time}--")
+                print(f"Open: {open_}")
+                print(f"Close: {close}")
+                print(f"Percent change: {round(calc_prcnt(close, open_), 2)}%")
+                # print(is_closed)
+                print(f"Volume: {volume}")
+                print(f"Volume in $: {volume * close}")
+                if "rel_v" in data[symbol][str(kline_s)]:
+                    print(f"Relative volume: {data[symbol][str(kline_s)]['rel_v']}")
                 print(interval)
                 print("-------------")
 
