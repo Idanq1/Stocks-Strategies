@@ -33,26 +33,18 @@ def calc_prcnt(num1, num2):
     return ((num1 - num2) / num2) * 100
 
 
-def sorter(df):
+def sorter(df):  # Three white soldiers??
     prcnt_threshold = 1
-    volume_threshold = 15000
-    volume_above_threshold = 2  # Multiply by how much
     volume_d_rel = 9000
-    last_candle = df.iloc[-1]
-    open_ = last_candle["Open"]
-    close = last_candle["Close"]
-    low = last_candle["Low"]
-    high = last_candle["High"]
-    rel_v = last_candle["rel_v"]
-    volume = last_candle["Volume"]
-
-    d_volume = volume * close  # Volume in $s
-    prcnt = calc_prcnt(high, open_)
-    if prcnt > prcnt_threshold:  # Candle is up by 1.5%
-        if rel_v * volume_above_threshold < volume:  # Checks if there's a spike in the volume (at least x2 of the previous 5 candles)
-            if d_volume > volume_threshold:
-                if rel_v * close > volume_d_rel:
-                    return True
+    candle1 = df.iloc[-1]  # Last candle
+    candle2 = df.iloc[-2]  # One before last candle
+    candle3 = df.iloc[-3]  # One before last candle
+    open_1 = candle1["Open"]
+    close1 = candle1["Close"]
+    open_2 = candle2["Open"]
+    close2 = candle2["Close"]
+    open_3 = candle3["Open"]
+    close3 = candle3["Close"]
     return False
 
 
