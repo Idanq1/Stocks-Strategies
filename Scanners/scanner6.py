@@ -33,18 +33,32 @@ def calc_prcnt(num1, num2):
     return ((num1 - num2) / num2) * 100
 
 
+def is_green(open_, close):
+    return open_ < close
+
+
 def sorter(df):  # Three white soldiers??
     prcnt_threshold = 1
-    volume_d_rel = 9000
-    candle1 = df.iloc[-1]  # Last candle
+    volume_d_rel = 13000  # Volume in # threshold
+    candle3 = df.iloc[-1]  # Last candle
     candle2 = df.iloc[-2]  # One before last candle
-    candle3 = df.iloc[-3]  # One before last candle
-    open_1 = candle1["Open"]
+    candle1 = df.iloc[-3]  # One before one before last candle
+    open1 = candle1["Open"]
     close1 = candle1["Close"]
-    open_2 = candle2["Open"]
+    open2 = candle2["Open"]
     close2 = candle2["Close"]
-    open_3 = candle3["Open"]
+    open3 = candle3["Open"]
     close3 = candle3["Close"]
+    high3 = candle3["High"]
+    volume3 = candle3["Volume"]
+
+    volume_d = volume3 * close3
+    if volume_d < volume_d_rel:
+        return False
+    if is_green(open1, close1) and is_green(open2, close2) and is_green(open3, close3):
+        # if calc_prcnt(close1, open1) > prcnt_threshold or calc_prcnt(close2, open2) > prcnt_threshold or calc_prcnt(close3, open3) > prcnt_threshold:
+        if calc_prcnt(high3, open3) > 1:
+            return True
     return False
 
 
@@ -55,7 +69,7 @@ def alert():
 
 async def candle_stick_data():
     data = {}
-    rel_v_period = 5
+    rel_v_period = 3
     printed = []
 
     url = "wss://stream.binance.com:9443/ws/"  # steam address

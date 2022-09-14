@@ -6,7 +6,6 @@ import datetime
 import requests
 import asyncio
 import json
-import time
 
 
 # TODO: Add relative volume  - V
@@ -36,7 +35,7 @@ def calc_prcnt(num1, num2):
 def sorter(df):
     prcnt_threshold = 1
     volume_threshold = 15000
-    volume_above_threshold = 2  # Multiply by how much
+    volume_above_threshold = 1.5  # Multiply by how much
     volume_d_rel = 9000
     last_candle = df.iloc[-1]
     open_ = last_candle["Open"]
@@ -48,7 +47,7 @@ def sorter(df):
 
     d_volume = volume * close  # Volume in $s
     prcnt = calc_prcnt(high, open_)
-    if prcnt > prcnt_threshold:  # Candle is up by 1.5%
+    if prcnt > prcnt_threshold:  # Candle is up by 1%
         if rel_v * volume_above_threshold < volume:  # Checks if there's a spike in the volume (at least x2 of the previous 5 candles)
             if d_volume > volume_threshold:
                 if rel_v * close > volume_d_rel:
@@ -138,5 +137,5 @@ async def candle_stick_data():
                     print(interval)
                     print("----------------")
 
-
-asyncio.get_event_loop().run_until_complete(candle_stick_data())
+if __name__ == '__main__':
+    asyncio.get_event_loop().run_until_complete(candle_stick_data())
