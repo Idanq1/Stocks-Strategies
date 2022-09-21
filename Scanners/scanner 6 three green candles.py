@@ -38,7 +38,7 @@ def is_green(open_, close):
 
 
 def sorter(df):  # Three white soldiers??
-    prcnt_threshold = 1
+    prcnt_threshold = 0.8
     volume_d_rel = 13000  # Volume in # threshold
     candle3 = df.iloc[-1]  # Last candle
     candle2 = df.iloc[-2]  # One before last candle
@@ -57,7 +57,7 @@ def sorter(df):  # Three white soldiers??
         return False
     if is_green(open1, close1) and is_green(open2, close2) and is_green(open3, close3):
         # if calc_prcnt(close1, open1) > prcnt_threshold or calc_prcnt(close2, open2) > prcnt_threshold or calc_prcnt(close3, open3) > prcnt_threshold:
-        if calc_prcnt(high3, open3) > 1:
+        if calc_prcnt(high3, open3) > prcnt_threshold:
             return True
     return False
 
@@ -145,4 +145,5 @@ async def candle_stick_data():
                     print("----------------")
 
 
+print(datetime.datetime.now().strftime("%H:%M:%S"))
 asyncio.get_event_loop().run_until_complete(candle_stick_data())
