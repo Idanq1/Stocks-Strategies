@@ -53,7 +53,7 @@ def alert():
         winsound.Beep(2000, 80)
 
 
-def main(df, ema_1, ema_2, rsi_period):
+def main(df, ema_1, ema_2, rsi_period, sma_1):
     initial_capital = float(20000.0)
 
     for candle in hist_data:
@@ -68,8 +68,10 @@ def main(df, ema_1, ema_2, rsi_period):
     df = df.assign(RSI14=pd.Series(talib.RSI(df["Close"], rsi_period)))
     df = df.assign(EMA9=pd.Series(talib.EMA(df["Close"], ema_1)))
     df = df.assign(EMA16=pd.Series(talib.EMA(df["Close"], ema_2)))
-    df["signal"] = np.where((df["EMA9"] > df["EMA16"]) & (df["Close"] > df["EMA9"]) & (df["RSI14"] > 50), 1.0, 0.0)
+    df = df.assign(SMA100=pd.Series(talib.EMA(df["Close"], sma_1)))
+    df["signal"] = np.where((df["EMA9"] > df["EMA16"]) & (df["Close"] > df["EMA9"]) & (df["RSI14"] > 50) & (df["SMA100"] < df["Close"]), 1.0, 0.0)
     df["positions"] = df["signal"].diff()
+
 
     pd.set_option('display.max_columns', None)
     # print(df)
@@ -86,10 +88,11 @@ def main(df, ema_1, ema_2, rsi_period):
 
 if __name__ == '__main__':
     s = time.time()
-    hist_data = get_historical_data("BTCUSDT", "5m")
+    hist_data = get_historical_data("ETHUSDT", "5m")
     data = pd.DataFrame(columns=["Open", "High", "Close", "Low", "Volume"])
 
     tests = []
+    sma1 = range(50, 200, 25)
     ema1 = range(4, 20)
     ema2 = range(7, 20)
     rsi = range(5, 18)
@@ -98,11 +101,11 @@ if __name__ == '__main__':
         print(f"Checking ema1: {shrt_ema}")
         for long_ema in ema2:
             for rsi_v in rsi:
-                total = main(data, shrt_ema, long_ema, rsi_v)
-                # if total > top:
-                #     top = total
-                #     s = [shrt_ema, long_ema, rsi_v]
-                tests.append({"ema1": shrt_ema, "ema2": long_ema, "rsi": rsi_v, "total": total})
+                for long_sma in sma1:
+                    total = main(data, shrt_ema, long_ema, rsi_v, long_sma)
+                    if total < 20000:
+                        continue
+                    tests.append({"ema1": shrt_ema, "ema2": long_ema, "rsi": rsi_v, "sma1": long_sma, "total": total})
 
     tests = sorted(tests, key=lambda x: x["total"])
     tests.reverse()

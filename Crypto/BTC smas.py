@@ -51,7 +51,7 @@ def alert():
         winsound.Beep(2000, 80)
 
 
-def main(ema_1, ema_2, rsi_period):
+def main(ema_1, ema_2, rsi_period, sma_1):
     hist_data = get_historical_data("BTCUSDT", "5m")
     df = pd.DataFrame(columns=["Open", "High", "Close", "Low", "Volume"])
     # ema_1 = 9  # Period
@@ -73,7 +73,8 @@ def main(ema_1, ema_2, rsi_period):
     df = df.assign(RSI14=pd.Series(talib.RSI(df["Close"], rsi_period)))
     df = df.assign(EMA9=pd.Series(talib.EMA(df["Close"], ema_1)))
     df = df.assign(EMA16=pd.Series(talib.EMA(df["Close"], ema_2)))
-    df["signal"] = np.where((df["EMA9"] > df["EMA16"]) & (df["Close"] > df["EMA9"]) & (df["RSI14"] > 50), 1.0, 0.0)
+    df = df.assign(SMA100=pd.Series(talib.EMA(df["Close"], sma_1)))
+    df["signal"] = np.where((df["EMA9"] > df["EMA16"]) & (df["Close"] > df["EMA9"]) & (df["RSI14"] > 50) & (df["SMA100"] < df["Close"]), 1.0, 0.0)
     df["positions"] = df["signal"].diff()
 
     pd.set_option('display.max_columns', None)
@@ -90,5 +91,5 @@ def main(ema_1, ema_2, rsi_period):
 
 
 if __name__ == '__main__':
-    main(9, 16, 14)
+    main(9, 16, 14, 100)
 
