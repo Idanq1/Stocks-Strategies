@@ -31,9 +31,16 @@ def sorter(df, symbol):
     df = df[symbol]
     candle = df.iloc[-1]
     close = candle["Close"]
-    at_high = highs[symbol]
-    prct = calc_prcnt(float(at_high), float(close))  # Percent between high and close
-    if prct < 1:
+    vol_d = candle["Vol"] * close
+    # rel_vol_d =
+    at_high = highs[symbol]["high"]  # 24 high
+    at_low = highs[symbol]["low"]  # 24 low
+    prct_hl = calc_prcnt(at_high, at_low)
+    prct = calc_prcnt(at_high, float(close))  # Percent between high and close
+
+    if vol_d < 10000:  # vol in dollars has to be more than 10,000$
+        return False
+    if prct * 10 < prct_hl:  # Should be that only the top of the
         return True
     return False
 
@@ -44,10 +51,9 @@ def get_24_h():
     global highs
     for s in s_list:
         symbol = s["symbol"]
-        high = s["highPrice"]
-        low = s["lowPrice"]
+        high = float(s["highPrice"])
+        low = float(s["lowPrice"])
         highs[symbol] = {"high": high, "low": low}
-        # TODO: Calc percent from low to high than consider it in the calculations
 
 
 def alert():
@@ -58,12 +64,13 @@ def alert():
 async def candle_stick_data():
     data = {}
     save_number = 1
-    printed = []
+    printed = {}
 
     url = "wss://stream.binance.com:9443/ws/"  # steam address
     symbols = get_tickers()
-    symbols.remove("BTCUSDT")  # Cause I have no idea what to put on first pair
-    symbols.remove("BUSDUSDT")  # Cause I have no idea what to put on first pair
+    to_remove = ["BTCUSDT", "BUSDUSDT", "USDTTRY", "USDTBRL", "USDTBIDR", "USDTRUB", "USDTDAI", "USDTUAH", "USDTIDRT", "USDTNGN"]  # Mostly fiat
+    for sym_r in to_remove:
+        symbols.remove(sym_r)
     symbols = [f"{sym.lower()}@kline_1m" for sym in symbols]
     first_pair = 'btcusdt@kline_1m'  # first pair
 
@@ -98,16 +105,17 @@ async def candle_stick_data():
             volume = float(resp["k"]["v"])
             is_closed = bool(resp["k"]["x"])
             if symbol not in data:
-                data[symbol] = pd.DataFrame(np.array([[open_, high, close, low, volume, is_closed]]), index=[kline_s], columns=["Open", "High", "Close", "Low", "Volume", "Is Closed"])
+                data[symbol] = pd.DataFrame(np.array([[open_, high, close, low, volume, is_closed]]), index=[kline_s], columns=["Open", "High", "Close", "Low", "Vol", "Is Closed"])
             else:
                 data[symbol].loc[kline_s] = (open_, high, close, low, volume, is_closed)  # Adds a new row
                 if len(data[symbol]) > save_number:  # Deletes the first row for memory wise and so it doesn't calculate new relative volume with more than the last 5 candles
                     data[symbol].drop(index=data[symbol].index[0], axis=0, inplace=True)
 
             if symbol in printed:
-                if is_closed:  # So it doesn't print twice the same candle
-                    printed.remove(symbol)
-                continue
+                sb = time.time() - printed[symbol]  # Sent before (x) seconds
+                if sb < 300:  # Print every 5 minutes so it won't spam
+                    get_24_h()
+                    continue
 
             nan = False
             for x in data[symbol].iloc[-1].tolist():
@@ -115,16 +123,15 @@ async def candle_stick_data():
                     nan = True
             if not nan:  # Check if there's a nan value in the array (The indicators)
                 to_print = sorter(data, symbol)
-                # rel_v = data[symbol].iloc[-1]['rel_v']
-                # rel_v_d = rel_v * close
                 if to_print:
-                    printed.append(symbol)
-                    alert()
+                    printed[symbol] = time.time()
                     current_time = datetime.datetime.now().strftime("%H:%M:%S")
                     print(f"--{symbol}---{current_time}--")
-                    print(f"High: {highs[symbol]}")
+                    print(f"High: {highs[symbol]['high']}")
                     print(f"Price: {close}")
                     print("----------------")
+                    alert()
+                    get_24_h()  # Reset all the highs/lows
 
 
 def main():

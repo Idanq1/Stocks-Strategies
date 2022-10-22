@@ -82,8 +82,17 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Python.Streaming">
+=======
+<<<<<<< Updated upstream
+  <component name="RunManager" selected="Python.BTC smas optimize">
+>>>>>>> c0f4dc0b39d2297c9a174760219900a97bee734d
     <configuration name="BTC smas optimize" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+=======
+  <component name="RunManager" selected="Python.scanner7 24h high">
+    <configuration name="bot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+>>>>>>> Stashed changes
       <module name="Stocks-Strategies" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
