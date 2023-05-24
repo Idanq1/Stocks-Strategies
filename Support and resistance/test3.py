@@ -97,7 +97,6 @@ def avg_pts(local_min, local_max):
 
 def main(symbol, start_month, find_by, threshold_pts):
     df = get_stock_info(symbol, start_month)
-
     series = df[find_by]
     series.index = np.arange(series.shape[0])
 
@@ -140,8 +139,8 @@ def main(symbol, start_month, find_by, threshold_pts):
 
 
 if __name__ == '__main__':
-    sym = "YVR"
-    months_back = 3
+    sym = "THS"
+    months_back = 11
     fnd_by = "Close"
     threshold_days = 2  # How many days can count as a minima/maxima noise and ignore it
     main(sym, months_back, fnd_by, threshold_days)
